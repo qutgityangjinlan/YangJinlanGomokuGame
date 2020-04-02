@@ -3,5 +3,6 @@ package controller;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class sss {
+public class test {
+    
 }
