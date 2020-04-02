@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans
+    	http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/mvc ">
+	<!-- 使用扫描机制，扫描控制器类 -->
+	<context:component-scan base-package="com.yjl.controller"/>
+	<!-- annotation-driven用于简化开发的配置，注解DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter -->
+	<mvc:annotation-driven/>
+<!--
+	<mvc:default-servlet-handler/>
+	<mvc:resources location="/WEB-INF/jsp/style/" mapping="/style/**"/>
+	<mvc:resources location="/WEB-INF/jsp/js/" mapping="/js/**"/>
+	<mvc:resources location="/WEB-INF/jsp/images/" mapping="/images/**"/>
+	<mvc:resources location="classpath:/com/yjl/servlet/" mapping="/**.do"/>
+	<mvc:resources location="/upload/" mapping="/**.gif"/>-->
+	<!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.com.yjl.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>-->
+	<!-- 配置视图解析器 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver">
+		<!-- 前缀 -->
+		<property name="prefix" value="/jsp/"/>
+		<!-- 后缀 -->
+		<property name="suffix" value=".jsp"/>
+	</bean>
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="1024000000"/>
+		<property name="defaultEncoding" value="utf-8"/>
+	</bean>
+
+</beans>
