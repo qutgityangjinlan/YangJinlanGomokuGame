@@ -6,18 +6,227 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5390d49f-82e2-44ee-a815-659344277693" name="Default Changelist" comment="IDEA 项目git ...">
-      <change afterPath="$PROJECT_DIR$/.idea/YangJinlanGomokuGame.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/jdbc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" afterDir="false" />
+    <list default="true" id="5390d49f-82e2-44ee-a815-659344277693" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YangJinlanGomokuGame.ipr" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YangJinlanGomokuGame.iws" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.annotation.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.ejb.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.jms.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.persistence.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.resource.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.servlet.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.servlet.jsp.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.transaction.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/Realm/myrealm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/controller/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/controller/ValidateCodeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/dao/UserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/dao/UserLogDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/mapper/userLogMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/mapper/userMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/pojo/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/pojo/UserLog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/service/UserLogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/service/impl/UserLogServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/utils/DateUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/utils/WordDefined.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/webSocket/ChatServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/webSocket/HttpSessionConfigurator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/webSocket/VideoServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/webSocket/five_chessServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/test/testmybatis.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/test/testtest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ApplicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/AI_five-chess.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/json.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/ueditor-1.1.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/about.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/errorinfo.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/five-chess.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/help.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/info-setting.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/information.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/log.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/main.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/register.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/css/admin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/css/amazeui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/css/amazeui.flat.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/css/amazeui.flat.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/css/amazeui.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/css/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/fonts/FontAwesome.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/fonts/fontawesome-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/fonts/fontawesome-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/fonts/fontawesome-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/fonts/fontawesome-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/i/app-icon72x72@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/i/examples/admin-chrome.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/i/examples/admin-firefox.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/i/examples/admin-ie.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/i/examples/admin-opera.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/i/examples/admin-safari.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/i/examples/adminPage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/i/examples/blogPage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/i/examples/landing.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/i/examples/landingPage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/i/examples/loginPage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/i/examples/sidebarPage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/i/favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/i/startup-640x1096.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/js/amazeui.ie8polyfill.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/js/amazeui.ie8polyfill.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/js/amazeui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/js/amazeui.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/js/amazeui.widgets.helper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/js/amazeui.widgets.helper.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/js/handlebars.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/amaze/js/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/contextjs/css/context.standalone.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/contextjs/js/context.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/jquery/jquery-2.1.4.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/layer/extend/layer.ext.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/layer/layer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/layer/skin/default/icon-ext.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/layer/skin/default/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/layer/skin/default/loading-0.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/layer/skin/default/loading-1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/layer/skin/default/loading-2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/layer/skin/layer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/layer/skin/layer.ext.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/laypage/laypage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/laypage/skin/laypage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/plugins/sockjs/sockjs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/css/chess.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/css/mosto.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/adm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/avtar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/backg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/backg1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/baizi.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/bg1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/bg2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/bg3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/bg4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/bg5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/bizhi.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/bizhi1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/close.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/default_head.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/heizi.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/key.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/pic.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/ricepaper.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/robot.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/tou1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/tou2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/touxiang.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/img/touxiang1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/js/ai2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/js/ai2.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/js/board.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/js/jcanvas.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/source/js/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/system-setting.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/include/commonfile.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/include/footer.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/include/header.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/include/sidebar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/YangJinlanGomokuGame_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/YangJinlanGomokuGame_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/classes/controller/test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/YangJinlanGomokuGame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/YangJinlanGomokuGame.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/ant-1.9.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/ant-launcher-1.9.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/aopalliance-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/asm-5.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/aspectjweaver-1.8.13.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/cglib-3.2.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/commons-dbcp2-2.2.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/commons-fileupload-1.3.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/commons-io-2.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/commons-logging-1.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/commons-pool2-2.5.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/javassist-3.22.0-CR2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/json-lib-2.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/log4j-1.2.17.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/log4j-api-2.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/log4j-core-2.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/mybatis-3.4.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/mybatis-spring-1.3.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/mysql-connector-java-5.1.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/ognl-3.1.15.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/slf4j-api-1.7.25.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/slf4j-log4j12-1.7.25.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/spring-aop-5.0.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/spring-aspects-5.0.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/spring-beans-5.0.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/spring-context-5.0.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/spring-core-5.0.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/spring-expression-5.0.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/spring-jdbc-5.0.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/spring-tx-5.0.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/spring-web-5.0.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/spring-webmvc-5.0.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/taglibs-standard-impl-1.2.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/lib/taglibs-standard-spec-1.2.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/jdbc.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/ant-1.9.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/ant-launcher-1.9.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/aopalliance-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/asm-5.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/aspectjweaver-1.8.13.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/cglib-3.2.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/commons-dbcp2-2.2.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/commons-fileupload-1.3.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/commons-io-2.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/commons-logging-1.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/commons-pool2-2.5.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/javassist-3.22.0-CR2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/json-lib-2.4.jar" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/json-lib-2.4-jdk15.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/log4j-1.2.17.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/log4j-api-2.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/log4j-core-2.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/mybatis-3.4.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/mybatis-spring-1.3.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/mysql-connector-java-5.1.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/ognl-3.1.15.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/slf4j-api-1.7.25.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/slf4j-log4j12-1.7.25.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/spring-aop-5.0.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/spring-aspects-5.0.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/spring-beans-5.0.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/spring-context-5.0.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/spring-core-5.0.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/spring-expression-5.0.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/spring-jdbc-5.0.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/spring-tx-5.0.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/spring-web-5.0.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/spring-webmvc-5.0.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/taglibs-standard-impl-1.2.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/taglibs-standard-spec-1.2.5.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,29 +286,47 @@
     <option name="vmOptions" value="-Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true" />
   </component>
   <component name="ProjectId" id="1ZxoJmEIQPa404HOjtrcj2hBeMv" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="MyBatisLogPluginindexNum" value="199" />
+    <property name="MyBatisLogPluginparameters" value="Parameters:" />
+    <property name="MyBatisLogPluginpreparing" value="Preparing:" />
+    <property name="MyBatisLogPluginrunning" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.38390803" />
-    <property name="settings.editor.selected.configurable" value="spring.boot" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\JavaProjects\YangJinlanGomokuGame\src\main\webapp\WEB-INF\jsp" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.yjl.controller" />
+      <recent name="com.yjl.Realm" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="H:\JavaProjects\YangJinlanGomokuGame\src\main\resources" />
-      <recent name="H:\JavaScript\YangJinlanGomokuGame\src\main\webapp\WEB-INF" />
+      <recent name="H:\JavaProjects\YangJinlanGomokuGame\src\main\java" />
+      <recent name="H:\JavaProjects\YangJinlanGomokuGame\src\main\java\com\yjl" />
+      <recent name="H:\JavaProjects\YangJinlanGomokuGame\src\main\java\com\yjl\service" />
+      <recent name="H:\JavaProjects\YangJinlanGomokuGame\src\main\java\com\yjl\mapper" />
+      <recent name="H:\JavaProjects\YangJinlanGomokuGame\src\main\java\com\yjl\dao" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -110,8 +337,8 @@
   </component>
   <component name="RunManager">
     <configuration name="Tomcat 9.0" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.171" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/YangJinlanGomokuGame_war_exploded/" />
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
       <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
       <deployment>
         <artifact name="YangJinlanGomokuGame:war exploded">
@@ -231,7 +458,32 @@
       <workItem from="1585795312594" duration="106000" />
       <workItem from="1585795429169" duration="447000" />
       <workItem from="1585795935841" duration="1279000" />
-      <workItem from="1585804824496" duration="3316000" />
+      <workItem from="1585804824496" duration="16431000" />
+      <workItem from="1585828786572" duration="4277000" />
+      <workItem from="1585866690625" duration="8005000" />
+      <workItem from="1585894589274" duration="7138000" />
+      <workItem from="1585915119118" duration="4040000" />
+      <workItem from="1585919624238" duration="1969000" />
+      <workItem from="1585962224320" duration="123000" />
+      <workItem from="1586045555736" duration="2134000" />
+      <workItem from="1586047906810" duration="559000" />
+      <workItem from="1586048537478" duration="905000" />
+      <workItem from="1586049521673" duration="1520000" />
+      <workItem from="1586051158141" duration="654000" />
+      <workItem from="1586059973600" duration="252000" />
+      <workItem from="1586060394755" duration="3049000" />
+      <workItem from="1586069274627" duration="647000" />
+      <workItem from="1586072473636" duration="4383000" />
+      <workItem from="1586077066807" duration="164000" />
+      <workItem from="1586077246822" duration="226000" />
+      <workItem from="1586077490538" duration="145000" />
+      <workItem from="1586077654395" duration="3809000" />
+      <workItem from="1586087579819" duration="7776000" />
+      <workItem from="1586137162249" duration="7882000" />
+      <workItem from="1586162411112" duration="2002000" />
+      <workItem from="1586220805555" duration="10046000" />
+      <workItem from="1586314583402" duration="8791000" />
+      <workItem from="1586587937539" duration="1542000" />
     </task>
     <task id="LOCAL-00001" summary="IDEA git ...">
       <created>1585806653589</created>
@@ -240,105 +492,182 @@
       <option name="project" value="LOCAL" />
       <updated>1585806653590</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="项目框架搭建">
+      <created>1585808810123</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1585808810123</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="IDEA git ..." />
-    <option name="LAST_COMMIT_MESSAGE" value="IDEA git ..." />
+    <MESSAGE value="项目框架搭建" />
+    <option name="LAST_COMMIT_MESSAGE" value="项目框架搭建" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="71" key="#Project_Structure" timestamp="1585807376632">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="71" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1585807376632" />
-    <state x="447" y="96" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585805952809">
+    <state x="361" y="71" key="#SQL_Dialects" timestamp="1586046728575">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="447" y="96" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1585805952809" />
+    <state x="361" y="71" key="#SQL_Dialects/0.0.1536.824@0.0.1536.824" timestamp="1586046728575" />
+    <state x="361" y="71" key="#Template_Data_Languages" timestamp="1586090468657">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="71" key="#Template_Data_Languages/0.0.1536.824@0.0.1536.824" timestamp="1586090468657" />
+    <state x="223" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586060119773">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1586060119773" />
+    <state x="515" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586074790646">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="515" y="215" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1586074790646" />
     <state x="399" y="99" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog" timestamp="1585807263938">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="399" y="99" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/0.0.1536.824@0.0.1536.824" timestamp="1585807263938" />
+    <state x="239" y="124" key="#com.intellij.ide.util.MemberChooser" timestamp="1586061736756">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="239" y="124" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1586061736756" />
     <state x="501" y="106" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1585796524440">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="501" y="106" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1536.824@0.0.1536.824" timestamp="1585796524440" />
-    <state x="343" y="6" key="CommitChangelistDialog2" timestamp="1585807140755">
+    <state x="850" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586046318623">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="343" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585807140755" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1585806139409">
+    <state x="850" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1586046318623" />
+    <state x="343" y="6" key="CommitChangelistDialog2" timestamp="1585808809465">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585806139409" />
-    <state width="1024" height="445" key="GridCell.Tab.0.bottom" timestamp="1585808647213">
+    <state x="343" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585808809465" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1585879961710">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="445" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585808647213" />
-    <state width="1024" height="445" key="GridCell.Tab.0.center" timestamp="1585808647211">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585879961710" />
+    <state width="1024" height="217" key="GridCell.Tab.0.bottom" timestamp="1586335572387">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="445" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585808647211" />
-    <state width="1024" height="445" key="GridCell.Tab.0.left" timestamp="1585808647211">
+    <state width="1024" height="217" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586335572387" />
+    <state width="1024" height="217" key="GridCell.Tab.0.center" timestamp="1586335572387">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="445" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585808647211" />
-    <state width="1024" height="445" key="GridCell.Tab.0.right" timestamp="1585808647212">
+    <state width="1024" height="217" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586335572387" />
+    <state width="1024" height="217" key="GridCell.Tab.0.left" timestamp="1586335572387">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="445" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585808647212" />
-    <state width="1024" height="445" key="GridCell.Tab.1.bottom" timestamp="1585808626695">
+    <state width="1024" height="217" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586335572387" />
+    <state width="1024" height="217" key="GridCell.Tab.0.right" timestamp="1586335572387">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="445" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585808626695" />
-    <state width="1024" height="445" key="GridCell.Tab.1.center" timestamp="1585808626695">
+    <state width="1024" height="217" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586335572387" />
+    <state width="1024" height="56" key="GridCell.Tab.1.bottom" timestamp="1586335516243">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="445" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1585808626695" />
-    <state width="1024" height="445" key="GridCell.Tab.1.left" timestamp="1585808626695">
+    <state width="1024" height="56" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586335516243" />
+    <state width="1024" height="56" key="GridCell.Tab.1.center" timestamp="1586335516243">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="445" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1585808626695" />
-    <state width="1024" height="445" key="GridCell.Tab.1.right" timestamp="1585808626695">
+    <state width="1024" height="56" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1586335516243" />
+    <state width="1024" height="56" key="GridCell.Tab.1.left" timestamp="1586335516243">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="445" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1585808626695" />
-    <state width="1024" height="445" key="GridCell.Tab.2.bottom" timestamp="1585808626695">
+    <state width="1024" height="56" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1586335516243" />
+    <state width="1024" height="56" key="GridCell.Tab.1.right" timestamp="1586335516243">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="445" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585808626695" />
-    <state width="1024" height="445" key="GridCell.Tab.2.center" timestamp="1585808626695">
+    <state width="1024" height="56" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1586335516243" />
+    <state width="1024" height="56" key="GridCell.Tab.2.bottom" timestamp="1586335516244">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="445" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1585808626695" />
-    <state width="1024" height="445" key="GridCell.Tab.2.left" timestamp="1585808626695">
+    <state width="1024" height="56" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586335516244" />
+    <state width="1024" height="56" key="GridCell.Tab.2.center" timestamp="1586335516244">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="445" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1585808626695" />
-    <state width="1024" height="445" key="GridCell.Tab.2.right" timestamp="1585808626695">
+    <state width="1024" height="56" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1586335516244" />
+    <state width="1024" height="56" key="GridCell.Tab.2.left" timestamp="1586335516244">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="445" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1585808626695" />
-    <state x="151" y="0" key="SettingsEditor" timestamp="1585808519787">
+    <state width="1024" height="56" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1586335516244" />
+    <state width="1024" height="56" key="GridCell.Tab.2.right" timestamp="1586335516244">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="151" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585808519787" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1585806664499">
+    <state width="1024" height="56" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1586335516244" />
+    <state width="1024" height="197" key="GridCell.Tab.3.bottom" timestamp="1586076892349">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1585806664499" />
-    <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1585795936366">
+    <state width="1024" height="197" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586076892349" />
+    <state width="1024" height="197" key="GridCell.Tab.3.center" timestamp="1586076892349">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="449" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1585795936366" />
-    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1585796051197">
+    <state width="1024" height="197" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1586076892349" />
+    <state width="1024" height="197" key="GridCell.Tab.3.left" timestamp="1586076892349">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1585796051197" />
+    <state width="1024" height="197" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1586076892349" />
+    <state width="1024" height="197" key="GridCell.Tab.3.right" timestamp="1586076892349">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="197" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1586076892349" />
+    <state width="1024" height="474" key="GridCell.Tab.4.bottom" timestamp="1585874929952">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="474" key="GridCell.Tab.4.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585874929952" />
+    <state width="1024" height="474" key="GridCell.Tab.4.center" timestamp="1585874929952">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="474" key="GridCell.Tab.4.center/0.0.1536.824@0.0.1536.824" timestamp="1585874929952" />
+    <state width="1024" height="474" key="GridCell.Tab.4.left" timestamp="1585874929952">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="474" key="GridCell.Tab.4.left/0.0.1536.824@0.0.1536.824" timestamp="1585874929952" />
+    <state width="1024" height="474" key="GridCell.Tab.4.right" timestamp="1585874929952">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="474" key="GridCell.Tab.4.right/0.0.1536.824@0.0.1536.824" timestamp="1585874929952" />
+    <state width="212" height="477" key="HiddenNamespacesPopup" timestamp="1586077305084">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="212" height="477" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1586077305084" />
+    <state x="306" y="50" key="Maven.ArtifactSearchDialog" timestamp="1585810061193">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="306" y="50" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1585810061193" />
+    <state x="464" y="101" key="SettingsEditor" timestamp="1586077635121">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="464" y="101" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1586077635121" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1585808817245">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1585808817245" />
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1586314584542">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1586314584542" />
+    <state x="178" y="107" key="new project wizard" timestamp="1586334581831">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="178" y="107" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1586334581831" />
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1586087530580">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1586087530580" />
+    <state x="626" y="308" key="save.project.as.template.dialog" timestamp="1586078477554">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="626" y="308" key="save.project.as.template.dialog/0.0.1536.824@0.0.1536.824" timestamp="1586078477554" />
     <state x="449" y="95" key="spring file set editor" timestamp="1585807490045">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
