@@ -1,27 +1,21 @@
 package com.yjl.webSocket;
 
+import com.alibaba.fastjson.JSONObject;
+
+import javax.servlet.http.HttpSession;
+import javax.websocket.*;
+import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArraySet;
-import javax.servlet.http.HttpSession;
-import javax.websocket.EndpointConfig;
-import javax.websocket.OnClose;
-import javax.websocket.OnError;
-import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
-import javax.websocket.Session;
-import javax.websocket.server.ServerEndpoint;
 
-import com.alibaba.fastjson.JSONObject;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-@ServerEndpoint(value="/chatServer",configurator=HttpSessionConfigurator.class)
-public class ChatServer{
+@ServerEndpoint(value="/chessChatServer",configurator=HttpSessionConfigurator.class)
+public class ChessChatServer {
 	private static int onlineCount=0;	//统计在线人数
-	private static CopyOnWriteArraySet<ChatServer> webSocket=new CopyOnWriteArraySet<ChatServer>();//存放每个Server设置为线程安全
+	private static CopyOnWriteArraySet<ChessChatServer> webSocket=new CopyOnWriteArraySet<ChessChatServer>();//存放每个Server设置为线程安全
 	private Session session;
 	private String userid;//用户Id
 	private HttpSession httpSession;
@@ -81,7 +75,7 @@ public class ChatServer{
 	}
 	public void broadcast(String message)//广播信息
 	{
-		for(ChatServer chat:webSocket){
+		for(ChessChatServer chat:webSocket){
 			try{
 				chat.session.getBasicRemote().sendText(message);
 			}catch (IOException e) {
@@ -109,10 +103,10 @@ public class ChatServer{
 	}
 
 	public  void addOnlineCount() {
-		ChatServer.onlineCount++;
+		ChessChatServer.onlineCount++;
 	}
 
 	public  void subOnlineCount() {
-		ChatServer.onlineCount--;
+		ChessChatServer.onlineCount--;
 	}
 }

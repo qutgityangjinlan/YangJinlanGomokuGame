@@ -16,6 +16,7 @@
 <div class="am-cf admin-main">
     <jsp:include page="view/include/sidebar.jsp"/>
     <div class="admin-content">
+        <span class="heqi">和棋</span>
         <h1 class="biaoti">人人对战五子棋</h1>
         <input type="button" class="button32" onclick="offerGame()" value="和棋"/>
         <input type="button" class="button21" onclick="newgame()" value="重新开始"/>
@@ -39,7 +40,7 @@
     //创建websocket
     var wsServer = null;
     var ws = null;
-    wsServer = "ws://" + location.host + "${pageContext.request.contextPath}" + "/chessServer";
+    wsServer = "ws://" + location.host + "${pageContext.request.contextPath}" + "/chess2Server";
     ws = new WebSocket(wsServer);
     ws.onopen = function (evt) {
         ws.send(JSON.stringify({

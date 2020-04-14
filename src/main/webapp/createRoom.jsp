@@ -10,7 +10,7 @@
 <body>
 <jsp:include page="view/include/header.jsp"/>
 <div class="am-cf admin-main">
-    <jsp:include page="view/include/sidebar1.jsp"/>
+    <jsp:include page="view/include/sidebar.jsp"/>
     <div class="admin-content">
         <div class="" style="width: 80%;float:left;">
             <!-- 聊天区 -->
@@ -45,14 +45,18 @@
         <!-- 列表区 -->
         <div class="am-panel am-pa el-default" style="float:right;width: 20%;">
             <div class="am-panel-hd">
-                <h3 class="am-panel-title">在线列表 [<span id="onlinenum"></span>]</h3>
+                <h3 class="am-panel-title">加入房间</h3>
+                <ul>
+                    <li value="1"><a href="five-chess.jsp">初级房间</a></li>
+                    <li value="2"><a href="five-chess2.jsp">中级房间</a></li>
+                    <li value="3"><a href="five-chess3.jsp">高级房间</a></li>
+                </ul>
+
             </div>
             <div class="am-panel-hd">
-                <input type="button" class="button21" value="创建房间" onclick=creRoom()>
+                <h3 class="am-panel-title">在线列表 [<span id="onlinenum"></span>]</h3>
             </div>
             <ul class="am-list am-list-static am-list-striped" id="list">
-            </ul>
-            <ul class="am-list am-list-static am-list-striped" id="rooList">
             </ul>
         </div>
     </div>
@@ -61,14 +65,6 @@
     <span class="am-icon-btn am-icon-th-list"></span></a>
 <jsp:include page="view/include/footer.jsp"/>
 <script>
-    function creRoom() {
-
-        window.location.replace("${ctx}/five-chess.jsp");
-
-        showRoom(${rooList});
-
-
-    }
 
     if ("${message}") {
         layer.msg('${message}', {
@@ -85,7 +81,7 @@
 
     var wsServer = null;
     var ws = null;
-    wsServer = "ws://" + location.host + "${pageContext.request.contextPath}" + "/chessServer";	//WebServer的路径
+    wsServer = "ws://" + location.host + "${pageContext.request.contextPath}" + "/chessChatServer";	//WebServer的路径
     ws = new WebSocket(wsServer); //创建WebSocket对象
     ws.onopen = function (evt) {  //打开时候进行额回掉函数
         layer.msg("已经建立连接", {offset: 0}); //提示已经建立
@@ -110,7 +106,12 @@
             layer.msg("连接未开启!", {offset: 0, shift: 6});
         }
     }
+    $("#message").keyup(function (event) {
+        if (event.keyCode===13){
+            sendMessage();
+        }
 
+    });
     /**
      * 发送信息给后台
      */
