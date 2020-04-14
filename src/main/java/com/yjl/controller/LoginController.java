@@ -13,14 +13,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-//登陆注册控制器
+//登录注册控制器
 @Controller
 @RequestMapping(value="/user")
 public class LoginController {
@@ -29,6 +28,7 @@ public class LoginController {
 	@Resource
 	private UserLogServiceImpl userLogServiceImpl;
 	//	登陆
+	//@ModelAttribute注解用于将方法的参数或方法的返回值绑定到指定的模型属性上，并返回给Web视图
 	@RequestMapping("/login")
 	public String login(@ModelAttribute  User user,HttpServletRequest request, HttpSession session,RedirectAttributes redirectAttributes, WordDefined defined){
 		Subject subject= SecurityUtils.getSubject();
@@ -56,7 +56,7 @@ public class LoginController {
 			request.getSession().setAttribute("login_status", true);
 			request.getSession().setAttribute("lognumber", lognumber);
 			redirectAttributes.addFlashAttribute("message",defined.LOGIN_SUCCESS);
-			return "redirect:/index.jsp";
+			return "index";
 
 		}catch (Exception e) {
 			System.out.println("登录失败");
@@ -64,7 +64,7 @@ public class LoginController {
 			request.getSession().setAttribute("user", user);
 			request.getSession().setAttribute("errorInfo", "用户密码错误");
 			e.printStackTrace();
-			return "redirect:/login.jsp";
+			return "login";
 		}
 	}
 
@@ -80,20 +80,21 @@ public class LoginController {
 
 	}
 	@RequestMapping("/toregister")
-	public String toregister()
+	public String toregister(User user, RedirectAttributes redirectAttributes, Model model)
 
 	{
+		User user2 = userServiceImpl.selectUserByUserId(user.getUserid());
+		if (user2 != null){
+			model.addAttribute("registerError","用户名重复！");
+
+		}
 		return "register";
 	}
 
 	@RequestMapping("/register")
 	public String RegisterableService(User user, RedirectAttributes redirectAttributes, Model model)
 	{
-		User user2 = userServiceImpl.selectUserByUserId(user.getUserid());
-		if (user2 != null){
-			model.addAttribute("registerError","用户名重复！");
-			return "register";
-		}
+
 		User user1=new User();
 		user1.setUserid(user.getUserid());
 		user1.setPassword(user.getPassword());

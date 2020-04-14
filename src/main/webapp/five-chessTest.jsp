@@ -14,11 +14,10 @@
 <body>
 <jsp:include page="view/include/header.jsp"/>
 <div class="am-cf admin-main">
-    <jsp:include page="view/include/sidebar.jsp"/>
+    <jsp:include page="view/include/sidebar1.jsp"/>
     <div class="admin-content">
         <h1 class="biaoti">人人对战五子棋</h1>
         <input type="button" class="button21" onclick="newgame()" value="重新开始"/>
-        <input type="button" class="button31" onclick="exitRoom()" value="退出房间"/>
         <div class="am-panel am-pa el-default" style="float:right;width: 20%;">
             <div class="am-panel-hd">
                 <h3 class="am-panel-title">在线列表 [<span id="onlinenum"></span>]</h3>
@@ -48,36 +47,26 @@
     ws.onmessage = function (evt) {
         console.log(evt.data);
         getpanduan(evt.data);
+
     };
     ws.onerror = function (evt) {  //错误提示
     };
     ws.onclose = function (evt) {//关闭提示
     };
-
-
+    //画棋谱
     var chess = document.getElementById("canvas");
     var context = chess.getContext("2d");
     context.strokeStyle = "#d3d3d3"
-
-    var logo = new Image();
-    logo.src = "${ctx}/static/source/img/ricepaper.png";
-    logo.onload = function () {
-        context.drawImage(logo, 0, 0, 450, 450);
-        drawChessBoard();
-    }
-    //绘制棋盘
-    var drawChessBoard = function () {
-        context.beginPath();
-        for (var i = 0; i < 15; i++) {
-            context.moveTo(15 + i * 30, 15);
-            context.lineTo(15 + i * 30, 435);
-            context.stroke();
-            context.moveTo(15, 15 + i * 30);
-            context.lineTo(435, 15 + i * 30);
-            context.stroke();
-        }
+    //开始画线
+    context.beginPath();
+    for (var i = 0; i < 15; i++) {
+        context.moveTo(15 + i * 30, 15);
+        context.lineTo(15 + i * 30, 435);
+        context.stroke();
+        context.moveTo(15, 15 + i * 30);
+        context.lineTo(435, 15 + i * 30);
+        context.stroke();
         context.closePath();
-
     }
     var iswhite = false;
     var temp;
@@ -120,9 +109,6 @@
         if (confirm("开始新的游戏？")) {
             location.reload();
         }
-    }
-    function exitRoom() {
-        window.location.replace("${ctx}/createRoom.jsp");
     }
 
     // 	进行对后台发来的信息进行判断

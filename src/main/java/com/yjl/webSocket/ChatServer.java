@@ -1,16 +1,21 @@
 package com.yjl.webSocket;
 
-import com.alibaba.fastjson.JSONObject;
-
-import javax.servlet.http.HttpSession;
-import javax.websocket.*;
-import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArraySet;
+import javax.servlet.http.HttpSession;
+import javax.websocket.EndpointConfig;
+import javax.websocket.OnClose;
+import javax.websocket.OnError;
+import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;
+import javax.websocket.Session;
+import javax.websocket.server.ServerEndpoint;
+
+import com.alibaba.fastjson.JSONObject;
 
 @ServerEndpoint(value="/chatServer",configurator=HttpSessionConfigurator.class)
 public class ChatServer{

@@ -90,7 +90,7 @@
     </dependency>
     <!-- servlet 配置结束 -->
 
-    <!-- 各种json 配置开始 -->
+    <!-- 各种json 配置开始 图灵-->
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>fastjson</artifactId>
@@ -279,17 +279,11 @@
       <artifactId>spring-data-commons-core</artifactId>
       <version>1.4.1.RELEASE</version>
     </dependency>
-    <!-- Spring 配置结束 -->
-    <!-- mybatis 配置结束 -->
+    <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus -->
     <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis</artifactId>
-      <version>${mybatis.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis-spring</artifactId>
-      <version>1.2.3</version>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus</artifactId>
+      <version>3.3.1</version>
     </dependency>
   </dependencies>
 

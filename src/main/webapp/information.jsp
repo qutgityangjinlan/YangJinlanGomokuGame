@@ -16,12 +16,12 @@
         <div class="am-cf am-padding">
             <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">${userid}的个人信息</strong> / <small>info</small></div>
         </div>
-        <div class="am-tabs am-margin" data-am-tabs>
-            <ul class="am-tabs-nav am-nav am-nav-tabs">
+        <div class="am-tabs am-margin" data-am-tabs style="height: 300px">
+            <ul class="am-tabs-nav am-nav am-nav-tabs" >
                 <li class="am-active"><a href="#tab1">个人信息</a></li>
             </ul>
-            <div class="am-tabs-bd">
-                <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+            <div class="am-tabs-bd" style="height: 300px">
+                <div class="am-tab-panel am-fade am-in am-active" id="tab1" style="height: 300px">
                     <div class="am-g">
                         <c:set value="${user}" var="user"/>
                         <div class="am-u-md-3"><b>昵称:</b></div>
@@ -29,7 +29,7 @@
                             ${user.nickname}
                         </div>
                         <div class="am-u-md-6" style="float: right">
-                            <img class="am-circle" src="${pageContext.request.contextPath}/${user.profilehead}" width="140" height="140" alt="${user.nickname}"/>
+                            <img class="am-circle" src="${pageContext.request.contextPath}/${user.profilehead}" width="200" height="200" alt="${user.nickname}"/>
                         </div>
 
                         <div class="am-u-md-3"><b>性别:</b></div>
@@ -45,6 +45,14 @@
                         <div class="am-u-md-3">
                             <c:if test="${user.age == null || user.age == ''}">未知</c:if>
                             <c:if test="${user.age != null && user.age != ''}">${user.age}</c:if>
+                        </div>
+                        <div class="am-u-md-3"><b>积分:</b></div>
+                        <div class="am-u-md-3">
+                             ${score.score}
+                        </div>
+                        <div class="am-u-md-3"><b>段位:</b></div>
+                        <div class="am-u-md-3">
+                             ${score.level}
                         </div>
                         <div class="am-u-md-3"><b>简介:</b></div>
                         <div class="am-u-md-3">

@@ -31,7 +31,7 @@
 		<property name="maxWait" value="${maxWait}"/>
 	</bean>
 	<!-- 	加载数据库会话工厂 -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
 		<!-- 	    指定数据源 -->
 		<property name="dataSource" ref="dataSource"/>
 		<!-- 	    <property name="configLocation" value="classpath:mybatis-config.xml"></property> -->

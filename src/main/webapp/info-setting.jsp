@@ -22,7 +22,7 @@
             <ul class="am-tabs-nav am-nav am-nav-tabs">
                 <li class="am-active"><a href="#tab1">基本信息</a></li>
                 <li><a href="#tab2">修改头像</a></li>
-                <li><a href="#tab3">修改密码</a></li>
+                <li><a href="#tab3">个人积分</a></li>
             </ul>
 
             <div class="am-tabs-bd">
@@ -107,33 +107,40 @@
                 </div>
 
                 <div class="am-tab-panel am-fade" id="tab3">
-                    <form class="am-form am-form-horizontal" data-am-validator action="${ctx}/modifypassword/${userid}" method="post">
+                    <form class="am-form am-form-horizontal" data-am-validator action="${ctx}/score/${userid}" method="post">
                         <div class="am-form-group">
-                            <label for="password1" class="am-u-sm-2 am-form-label">原密码</label>
+                            <label for="userid" class="am-u-sm-2 am-form-label">总积分</label>
                             <div class="am-u-sm-10">
-                                <input type="password" id="password1" name="oldpass" required placeholder="请输入原密码...">
+                                <input type="text" id="score" name="score" value="${score.score}" disabled>
                             </div>
                         </div>
 
                         <div class="am-form-group">
-                            <label for="password2" class="am-u-sm-2 am-form-label">新密码</label>
+                            <label for="nickname" class="am-u-sm-2 am-form-label">段位</label>
                             <div class="am-u-sm-10">
-                                <input type="password" id="password2" name="newpass" required placeholder="请输入新密码...">
+                                <input type="text" id="level" name="level" value="${score.level}" disabled>
                             </div>
                         </div>
-
-                        <div class="am-form-group">
-                            <label for="password3" class="am-u-sm-2 am-form-label">确认新密码</label>
-                            <div class="am-u-sm-10">
-                                <input type="password" id="password3" data-equal-to="#password2" required placeholder="请确认新密码...">
-                            </div>
-                        </div>
-
-                        <div class="am-form-group">
-                            <div class="am-u-sm-10 am-u-sm-offset-2">
-                                <button type="submit" class="am-btn am-round am-btn-success"><span class="am-icon-send"></span> 提交修改</button>
-                            </div>
-                        </div>
+<%--                        <table class="am-table am-table-striped">--%>
+<%--                            <thead>--%>
+<%--                            <tr>--%>
+<%--                                <th>总积分</th>--%>
+<%--                                <th></th>--%>
+<%--                                <th>段位</th>--%>
+<%--                                <th></th>--%>
+<%--                                <th>作战记录</th>--%>
+<%--                            </tr>--%>
+<%--                            </thead>--%>
+<%--                            <tbody>--%>
+<%--                                <tr>--%>
+<%--                                    <td id = "scoreT"></td>--%>
+<%--                                    <td></td>--%>
+<%--                                    <td id = "levelT"> </td>--%>
+<%--                                    <td></td>--%>
+<%--                                    <td>#</td>--%>
+<%--                                </tr>--%>
+<%--                            </tbody>--%>
+<%--                        </table>--%>
                     </form>
                 </div>
             </div>
@@ -146,6 +153,15 @@
 </a>
 <jsp:include page="view/include/footer.jsp"/>
 <script>
+    // $.ajax({
+    //     url : "http://localhost:8080/YangJinlanGomokuGame_war_exploded/AI_five-chess.jsp",
+    //     type : "post",
+    //     dataType :"json",
+    //     contentType : "application/json",
+    //     success :function (scoreJson) {
+    //         $("#scoreT").append(scoreJson)
+    //     }
+    // });
     if("${message}"){
         layer.msg('${message}', {
             offset: 0,

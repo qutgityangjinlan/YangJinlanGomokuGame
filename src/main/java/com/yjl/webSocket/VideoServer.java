@@ -1,10 +1,12 @@
 package com.yjl.webSocket;
 
-import javax.websocket.*;
-import javax.websocket.server.ServerEndpoint;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.websocket.*;
+import javax.websocket.Session;
+import javax.websocket.server.ServerEndpoint;
 
 @ServerEndpoint(value="/videoServer",configurator=HttpSessionConfigurator.class)
 public class VideoServer {

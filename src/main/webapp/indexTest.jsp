@@ -10,7 +10,7 @@
 <body>
 <jsp:include page="view/include/header.jsp"/>
 <div class="am-cf admin-main">
-    <jsp:include page="view/include/sidebar.jsp"/>
+    <jsp:include page="view/include/sidebar1.jsp"/>
     <div class="admin-content">
         <div class="" style="width: 80%;float:left;">
             <!-- 聊天区 -->
@@ -86,7 +86,7 @@
             $('#onlinenum').text(parseInt(onlinenum) + 1);
         } else {
             $(this).text("未上线").removeClass("am-btn-success").addClass("am-btn-danger");
-            showNotice("图灵机器人未加入，你可以邀请她交流");
+            showNotice("图灵机器人加入，你可以与其交流");
             $('#onlinenum').text(parseInt(onlinenum) - 1);
         }
     });
@@ -156,12 +156,6 @@
         }
     }
 
-    $("#message").keyup(function (event) {
-        if (event.keyCode===13){
-            sendMessage();
-        }
-
-    });
     /**
      * 发送信息给后台
      */

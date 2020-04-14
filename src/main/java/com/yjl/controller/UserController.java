@@ -1,14 +1,16 @@
 package com.yjl.controller;
 
+import com.yjl.pojo.Score;
 import com.yjl.pojo.User;
 import com.yjl.pojo.UserLog;
+import com.yjl.service.UserScoreService;
 import com.yjl.service.impl.UserLogServiceImpl;
+import com.yjl.service.impl.UserScoreImpl;
 import com.yjl.service.impl.UserServiceImpl;
 import com.yjl.utils.DateUtil;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -25,28 +27,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@SessionAttributes({"userid"})
 public class UserController {
 	@Resource
 	private UserServiceImpl userServiceImpl;
 	@Resource
 	private UserLogServiceImpl userLogServiceImpl;
+	@Resource
+	private UserScoreImpl userScoreImpl;
 	DateUtil dateUtil=new DateUtil();
 	//	展示用户信息
+	//@PathVariable接收请求路径中占位符的值，跟RequestMapping中的参数一致
 	@RequestMapping("information/{userid}")
 	public ModelAndView information(@PathVariable("userid")String userid)
 	{
 		ModelAndView modelAndView=new ModelAndView();
 		User user=userServiceImpl.selectUserByUserId(userid);
+		Score score = userScoreImpl.selectByUserId(userid);
 		modelAndView.addObject("user", user);
+		modelAndView.addObject("score", score);
 		modelAndView.setViewName("information");
 		return modelAndView;
 	}
 	//	信息设置
 	@RequestMapping("infosetting/{userid}")
-	public ModelAndView infosetting(@PathVariable("userid")String userid,HttpServletRequest request){
+	public ModelAndView infosetting(@PathVariable("userid")String userid,HttpServletRequest request,Model model){
+		Score score=userScoreImpl.selectByUserId(userid);
 		ModelAndView modelAndView=new ModelAndView();
 		User user=userServiceImpl.selectUserByUserId(userid);
 		modelAndView.addObject("user", user);
+		model.addAttribute("score",score);
 		modelAndView.setViewName("info-setting");
 		return modelAndView;
 	}
@@ -112,40 +122,25 @@ public class UserController {
 			return "redirect:/information/"+userid;
 		}
 	}
-	//	修改密码
-	@RequestMapping("/modifypassword/{userid}")
-	public String modifyPassowrd(@PathVariable("userid")String userid,String oldpass,String newpass,RedirectAttributes redirectAttributes,HttpServletRequest request){
-		User user=userServiceImpl.selectUserByUserId(userid);
-		String password=user.getPassword();
-		if(password.equals(oldpass))
-		{
-			User user1=new User();
-			user1.setPassword(newpass);
-			user1.setUserid(userid);
-			boolean flag=userServiceImpl.updateUser(user1);
-			if(flag)
-			{
-				UserLog userLog=new UserLog();
-				String ip=request.getRemoteAddr();
-				userLog.setUserid(user.getUserid());
-				userLog.setTime(dateUtil.getDateformat());
-				userLog.setType("修改");
-				userLog.setDetail("修改密码");
-				userLog.setIp(ip);
-				userLogServiceImpl.insertLog(userLog);
-				redirectAttributes.addFlashAttribute("message", "["+userid+"]密码修改成功!");
-				return "redirect:/information/"+userid;
+	//	积分更新
+	@RequestMapping("/insertOrUpdateScore")
+	@ResponseBody
+	public Boolean CollectScore(@RequestParam("userid")String userid){
+			Score score = userScoreImpl.selectByUserId(userid);
+			if (score!=null){
+				score.setScore(score.getScore()+10);
+				score.setLevel((int)score.getScore()/20+"段");
+				score.setTime(dateUtil.getDateformat());
+				userScoreImpl.updateByUserId(score);
+			}else {
+				userScoreImpl.insertScore(new Score(){{
+					setUserid(userid);
+					setScore(10);
+					setTime(dateUtil.getDateformat());
+					setLevel("一段");
+				}});
 			}
-			else {
-				redirectAttributes.addFlashAttribute("error", "["+userid+"]密码修改失败!");
-				return "redirect:/infosetting/"+userid;
-			}
-		}
-		else{
-			System.out.println("修改失败!");
-			redirectAttributes.addFlashAttribute("error", "["+userid+"]密码修改失败!");
-		}
-		return "redirect:/infosetting/"+userid;
+			return true;
 	}
 	//	查看日志
 	@RequestMapping("/log/{userid}")

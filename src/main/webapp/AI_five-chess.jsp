@@ -9,7 +9,7 @@
     <title>人工智能五子棋</title>
     <link href="${pageContext.request.contextPath }/static/source/css/chess.css" rel='stylesheet' type='text/css'/>
     <jsp:include page="view/include/commonfile.jsp"/>
-    <script src="${ctx}/plugins/sockjs/sockjs.js"></script>
+    <script src="${pageContext.request.contextPath }/static/plugins/sockjs/sockjs.js"></script>
 </head>
 <body>
 <jsp:include page="view/include/header.jsp"/>
@@ -17,14 +17,14 @@
     <jsp:include page="view/include/sidebar.jsp"/>
     <div class="admin-content">
         <h1 class="biaoti">人机对战五子棋</h1>
-        <input type="button" class="button3" onclick="withdraw()" value="悔棋"/>
+        <input type="button" class="button3" id="button3" onclick="withdraw()" value="悔棋"/>
         <input type="button" class="button2" onclick="newgame()" value="重新开始"/>
         <div class="am-panel am-pa el-default" style="float:right;width: 20%;">
             <div class="am-panel-hd">
                 <h3 class="am-panel-title">人机对战</h3>
             </div>
-            <ul class="am-list am-list-static am-list-striped" >
-                <input type="button" class="button4" onclick="beginOne()" value="选择先手"/>
+            <ul class="am-list am-list-static am-list-striped">
+                <input type="button" class="button4" value="你为先手"/>
             </ul>
         </div>
         <canvas class="canvasplace" id="canvas" width="450" height="450"></canvas>
@@ -38,506 +38,360 @@
     var chess = document.getElementById("canvas");
     var context = chess.getContext("2d");
     context.strokeStyle = "#d3d3d3"
-    /*var logo=new Image();
-    logo.src="e://s1.jpg";
-    logo.onload=function()
-    {
-        context.drawImage(logo,80,80,256,256);
-    }*/
-//画棋盘
-    context.beginPath();
-    for (var i = 0; i < 15; i++) {
-        context.moveTo(15 + i * 30, 15);
-        context.lineTo(15 + i * 30, 435);
-        context.stroke();
-        context.moveTo(15, 15 + i * 30);
-        context.lineTo(435, 15 + i * 30);
-        context.stroke();
-        context.closePath();
+
+    var me = true;
+    var over = false;
+
+    var logo = new Image();
+    logo.src = "${ctx}/static/source/img/ricepaper.png";
+    logo.onload = function () {
+        context.drawImage(logo, 0, 0, 450, 450);
+        drawChessBoard();
     }
-    var iswhite = false;
-    var temp;
-    var chessboard = Array(14);
+    // 棋盘坐标
+
+    var chessBoard = [];
+
     for (var i = 0; i < 15; i++) {
-        chessboard[i] = Array(14);
+        chessBoard[i] = [];
         for (var j = 0; j < 15; j++) {
-            chessboard[i][j] = 0;
+            chessBoard[i][j] = 0;
         }
     }
-    var onStep = function (color, i, j) {
-        console.log("实下的位置:" + i + j);
+
+    //绘制棋盘
+    var drawChessBoard = function () {
         context.beginPath();
-        context.arc(15 + i * 30, 15 + j * 30, 13, 0, Math.PI * 2);
-        context.stroke();
-        context.closePath();
-        //设置渐变色 径向渐变
-        var gradient = context.createRadialGradient(15 + i * 30, 15 + j * 30, 13, 15 + i * 30, 15 + j * 30, 0);
-        if (color == "black") {
-            gradient.addColorStop(0, "#0a0a0a");
-            gradient.addColorStop(1, "#636767");
-            chessboard[i][j] = 1;
-        } else {
-            gradient.addColorStop(0, "#d1d1d1");
-            gradient.addColorStop(1, "#f9f9f9");
-            chessboard[i][j] = 2;
+        for (var i = 0; i < 15; i++) {
+            context.moveTo(15 + i * 30, 15);
+            context.lineTo(15 + i * 30, 435);
+            context.stroke();
+            context.moveTo(15, 15 + i * 30);
+            context.lineTo(435, 15 + i * 30);
+            context.stroke();
         }
-        context.fillStyle = gradient;
-        context.fill();
-
+        context.closePath();
 
     }
+
+    //画棋子
+    var onStep = function (i, j, me) {
+        console.log("实下的位置:" + i + j);
+
+        //将棋子push到list
+        chessList.push({
+            x: i,
+            y: j,
+            color: chessList.length % 2 === 0 ? 'black' : 'white'
+        })
+
+        console.log(chessList);
+
+        context.beginPath();
+        context.arc(15 + i * 30, 15 + j * 30, 13, 0, 2 * Math.PI);
+        var gradient = context.createRadialGradient(15 + i * 30 - 2, 15 + j * 30 + 2, 13, 15 + i * 30 - 2, 15 + j * 30 - 2, 0);
+        if (me) {
+            gradient.addColorStop(0, "#0A0A0A");
+            gradient.addColorStop(1, "#636766");
+        } else {
+            gradient.addColorStop(0, "#D1D1D1");
+            gradient.addColorStop(1, "#F9F9F9");
+        }
+
+        context.fillStyle = gradient;
+        context.closePath();
+        context.fill();
+    }
+
+    var chessList = [];
     //定义一个落子的方法
     chess.onclick = function (e) {
-        var color;
+        if (over) {
+            return false;
+        }
+        if (!me) {
+            return false;
+        }
+
         var x = e.offsetX;
         var y = e.offsetY;
-        console.log(x, y);
-        var i = parseInt(x / 30);
-        var j = parseInt(y / 30);
-        if (i < 0 || j < 0 || i > 14 || i > 14 || chessboard[i][j] != 0) {
-            return;
-        }
+        var i = Math.floor(x / 30);
+        var j = Math.floor(y / 30);
 
-        console.log("应下的地方:" + i + j);
-        docheck(i, j);
-        /*if(chessboard[i][j]==0)
-        {
-        console.log(i,j);
-        if(me==true)
-        {
-        chessboard[i][j]=1;
-        onStep(i,j,me);
-        iswin(i,j,me);
-        }
-        else if(me==false)
-        {
-        chessboard[i][j]=2;
-        onStep(i,j,me);
-        iswin(i,j,me);
-        AIplay();
+        if (chessBoard[i][j] === 0) {
+            onStep(i, j, me);
+            chessBoard[i][j] = 2; // 黑棋
 
-        }
-
-        me=!me;
-        }*/
-
-    }
-    function beginOne() {
-
-    }
-
-    function docheck(x, y) {
-        if (iswhite) {
-            color = "white";
-        } else {
-            color = "black";
-        }
-        drawchess(color, x, y);
-    }
-
-    function drawchess(color, x, y) {
-
-        if (x >= 0 && x < 15 && y >= 0 && y < 15) {
-            if (color == "white") {
-                iswhite = false;
-                onStep("white", x, y);
-                iswin("white", x, y);
-            } else {
-                iswhite = true;
-                onStep("black", x, y);
-                iswin("black", x, y);
-                AIplay();
-
-            }
-        }
-    }
-
-    iswin = function (color, x, y) {
-        if (color == "black") {
-            temp = 1;
-        } else if (color == "white") {
-            temp = 2;
-        }
-        lrcount(temp, x, y);
-        tbcount(temp, x, y);
-        rtcount(temp, x, y);
-        rbcount(temp, x, y);
-    }
-
-    function lrcount(temp, x, y)//横向判断五子棋的个数
-    {
-        console.log(x, y, temp);
-        var line = new Array(4);
-        var count = 0;
-        for (var i = x; i >= 0; i--) {
-            line[0] = i;
-            line[1] = y;
-            if (chessboard[i][y] == temp) {
-                count++;
-            } else {
-                i = -1;
-            }
-        }
-        for (var i = x; i <= 14; i++) {
-            line[2] = i;
-            line[3] = y;
-            if (chessboard[i][y] == temp) {
-                count++;
-            } else {
-                i = 100;
-            }
-        }
-        console.log("横向的个数:" + count);
-        success(line[0], line[1], line[2], line[3], temp, --count);
-    }
-
-    function tbcount(temp, x, y)//竖向判断五子棋的个数
-    {
-        var line = new Array(4);
-        var count = 0;
-        for (var i = y; i >= 0; i--) {
-            line[0] = x;
-            line[1] = i;
-            if (chessboard[x][i] == temp) {
-                count++;
-            } else {
-                i = -1;
-            }
-        }
-        for (var i = y; i <= 14; i++) {
-            line[2] = x;
-            line[3] = i;
-            if (chessboard[x][i] == temp) {
-                count++;
-            } else {
-                i = 100;
-            }
-        }
-        console.log("横向的个数:" + count);
-        success(line[0], line[1], line[2], line[3], temp, --count);
-    }
-
-    function rtcount(temp, x, y)//右斜判断五子棋个数
-    {
-        var line = Array(4);
-        var count = 0;
-        for (var i = x, j = y; i >= 0 && j >= 0;) {
-            line[0] = i;
-            line[1] = j;
-            if (chessboard[i][j] == temp) {
-                count++;
-            } else {
-                i = -1;
-                j = -1;
-            }
-            i--;
-            j--;
-        }
-        for (var i = x, j = y; i <= 14 && j <= 14;) {
-            line[2] = i;
-            line[3] = j;
-            if (chessboard[i][j] == temp) {
-                count++;
-            } else {
-                i = 100;
-                j = 100;
-            }
-            i++;
-            j++;
-        }
-        success(line[0], line[1], line[2], line[3], temp, --count)
-    }
-
-    function rbcount(temp, x, y)//左斜判断五子棋的个数
-    {
-        var line = Array(4);
-        var count = 0;
-        for (var i = x, j = y; i >= 0 && j <= 14;) {
-            line[0] = i;
-            line[1] = j;
-            if (chessboard[i][j] == temp) {
-                count++;
-            } else {
-                i = -1;
-                j = 100;
-            }
-            i--;
-            j++;
-        }
-        for (var i = x, j = y; i <= 14 && j >= 0;) {
-            line[2] = i;
-            line[3] = j;
-            if (chessboard[i][j] == temp) {
-                count++;
-            } else {
-                i = 100;
-                ;
-                j = -1;
-            }
-            i++;
-            j--;
-        }
-        success(line[0], line[1], line[2], line[3], temp, --count)
-    }
-
-
-    function success(a, b, c, d, temp, count)//判断是否为5颗
-    {
-        if (count == 5) {
-            context.beginPath();
-            context.lineWidth = 5;
-            context.strokeStyle = 'black';
-            context.moveTo(15 + 30 * a, 15 + 30 * b);
-            context.lineTo(15 + 30 * c, 15 + 30 * d);
-            context.closePath();
-            context.stroke();
-
-            if (temp == 1) {
-                winner = "黑棋胜利";
-            }
-            else{
-                winner = "白棋胜利";
-            }
-            alert(winner);
-        }
-        newgame = function () {
-            if (confirm("开始新的游戏？")) {
-                location.reload();
-            }
-        }
-
-    }
-
-    //AI
-
-    function getposition() {
-        var a = new Array(2);
-        var score = 0;
-        for (var x = 0; x < 15; x++)
-            for (var y = 0; y < 15; y++) {
-                if (chessboard[x][y] == 0) {
-                    if (judge(x, y) > score) {
-                        score = judge(x, y);
-                        a[0] = x;
-                        a[1] = y;
+            for (var k = 0; k < count; k++) {
+                if (wins[i][j][k]) {
+                    myWin[k]++;
+                    computerWin[k] = 6;
+                    if (myWin[k] === 5) {
+                        context.beginPath();
+                        context.arc(15 + i * 30, 15 + j * 30, 13, 0, 2 * Math.PI);
+                        context.fillStyle = 'red';
+                        context.closePath();
+                        context.fill();
+                        window.alert("你赢了!");
+                        over = true;
+                        //
+                        $.ajax({
+                            //请求方式
+                            type: "GET",
+                            //请求地址
+                            url: "insertOrUpdateScore",
+                            //数据，json字符串
+                            data: {userId:${userid}},
+                            //请求成功
+                            success: function (result) {
+                                console.log(result);
+                            },
+                            //请求失败，包含具体的错误信息
+                            error: function (e) {
+                                console.log(e.status);
+                                console.log(e.responseText);
+                            }
+                        });
                     }
                 }
             }
-        return a;
+            if (!over) {
+                me = !me;
+                computerAI();
+            }
+        }
+
     }
 
-    function AIplay() {
-        var str = getposition();
-        docheck(str[0], str[1]);
+    var wins = [];
+    var myWin = [];
+    var computerWin = [];
+
+    for (var i = 0; i < 15; i++) {
+        wins[i] = [];
+        for (var j = 0; j < 15; j++) {
+            wins[i][j] = [];
+        }
     }
 
-    function judge(x, y) {
-        var a = parseInt(leftRight(x, y, 1)) + parseInt(topBottom(x, y, 1)) + parseInt(rightBottom(x, y, 1)) + parseInt(rightTop(x, y, 1));
-        var b = parseInt(leftRight(x, y, 2)) + parseInt(topBottom(x, y, 2)) + parseInt(rightBottom(x, y, 2)) + parseInt(rightTop(x, y, 2));
-        var result = a + b;
-        return result;
+    var count = 0;
+
+    //竖线
+    for (var i = 0; i < 15; i++) {
+        for (var j = 0; j < 11; j++) {
+            for (var k = 0; k < 5; k++) {
+                wins[i][j + k][count] = true;
+            }
+            count++;
+        }
     }
 
-    function leftRight(x, y, num) {
-        var death = 0;
-        var live = 0;
-        var count = 0;
-        var arr = new Array(15);
+    //横线
+    for (var i = 0; i < 11; i++) {
+        for (var j = 0; j < 15; j++) {
+            for (var k = 0; k < 5; k++) {
+                wins[i + k][j][count] = true;
+            }
+            count++;
+        }
+    }
+
+    //斜线
+    for (var i = 0; i < 11; i++) {
+        for (var j = 0; j < 11; j++) {
+            for (var k = 0; k < 5; k++) {
+                wins[i + k][j + k][count] = true;
+            }
+            count++;
+        }
+    }
+
+    //反斜线
+    for (var i = 0; i < 11; i++) {
+        for (var j = 14; j > 3; j--) {
+            for (var k = 0; k < 5; k++) {
+                wins[i + k][j - k][count] = true;
+            }
+            count++;
+        }
+    }
+
+    for (var i = 0; i < count; i++) {
+        myWin[i] = 0;
+        computerWin[i] = 0;
+    }
+    console.log(count);
+
+    function computerAI() {
+        var myScore = [];
+        var computerScore = [];
+        var max = 0;
+        var maxX = 0;
+        var maxY = 0;
+
         for (var i = 0; i < 15; i++) {
-            arr[i] = new Array(15);
+            myScore[i] = [];
+            computerScore[i] = [];
             for (var j = 0; j < 15; j++) {
-                arr[i][j] = chessboard[i][j];
+                myScore[i][j] = 0;
+                computerScore[i][j] = 0;
             }
         }
-        arr[x][y] = num;
-        for (var i = x; i >= 0; i--) {
-            if (arr[i][y] == num) {
-                count++;
-            } else if (arr[i][y] == 0) {
-                live += 1;
-                i = -1;
-            } else {
-                death += 1;
-                i = -1;
-            }
-        }
-        for (var i = x; i <= 14; i++) {
-            if (arr[i][y] == num) {
-                count++;
-            } else if (arr[i][y] == 0) {
-                live += 1;
-                i = 100;
-            } else {
-                death += 1;
-                i = 100;
-            }
-        }
-        count -= 1;
-        return model(count, death);
-    }
 
-    function topBottom(x, y, num) {
-        var death = 0;
-        var live = 0;
-        var count = 0;
-        var arr = new Array(15);
         for (var i = 0; i < 15; i++) {
-            arr[i] = new Array(15);
             for (var j = 0; j < 15; j++) {
-                arr[i][j] = chessboard[i][j];
+                if (chessBoard[i][j] === 0) {
+                    for (var k = 0; k < count; k++) {
+                        if (wins[i][j][k]) {
+                            if (myWin[k] === 1) {
+                                myScore[i][j] += 200;
+                            } else if (myWin[k] === 2) {
+                                myScore[i][j] += 400;
+                            } else if (myWin[k] === 3) {
+                                myScore[i][j] += 2000;
+                            } else if (myWin[k] === 4) {
+                                myScore[i][j] += 10000;
+                            }
+                        }
+
+                        if (wins[i][j][k]) {
+                            if (computerWin[k] === 1) {
+                                computerScore[i][j] += 211;
+                            } else if (computerWin[k] === 2) {
+                                computerScore[i][j] += 420;
+                            } else if (computerWin[k] === 3) {
+                                computerScore[i][j] += 2100;
+                            } else if (computerWin[k] === 4) {
+                                computerScore[i][j] += 20000;
+                            }
+                        }
+                    }
+                    if (myScore[i][j] > max) {
+                        max = myScore[i][j];
+                        maxX = i;
+                        maxY = j;
+                    } else if (myScore[i][j] === max) {
+                        if (computerScore[i][j] > computerScore[maxX][maxY]) {
+                            maxX = i;
+                            maxY = j;
+                        }
+                    }
+                    if (computerScore[i][j] > max) {
+                        max = computerScore[i][j];
+                        maxX = i;
+                        maxY = j;
+                    } else if (computerScore[i][j] === max) {
+                        if (myScore[i][j] > myScore[maxX][maxY]) {
+                            maxX = i;
+                            maxY = j;
+                        }
+                    }
+                }
             }
         }
-        arr[x][y] = num;
-        for (var i = y; i >= 0; i--) {
-            if (arr[x][i] == num) {
-                count++;
-            } else if (arr[x][i] == 0) {
-                live += 1;
-                i = -1;
-            } else {
-                death += 1;
-                i = -1;
+        onStep(maxX, maxY, me);
+        chessBoard[maxX][maxY] = 1;
+        for (var k = 0; k < count; k++) {
+            if (wins[maxX][maxY][k]) {
+                computerWin[k]++;
+                myWin[k] = 6;
+                if (computerWin[k] === 5) {
+                    context.beginPath();
+                    context.arc(15 + maxX * 30, 15 + maxY * 30, 13, 0, 2 * Math.PI);
+                    context.fillStyle = 'red';
+                    context.closePath();
+                    context.fill();
+                    window.alert("计算机赢了!");
+                    over = true;
+                }
             }
         }
-        for (var i = y; i <= 14; i++) {
-            if (arr[x][i] == num) {
-                count++;
-            } else if (arr[x][i] == 0) {
-                live += 1;
-                i = 100;
-            } else {
-                death += 1;
-                i = 100;
-            }
+        if (!over) {
+            me = !me;
+            console.log(me);
         }
-        count -= 1;
-        return model(count, death);
     }
 
-    function rightBottom(x, y, num) {
-        var death = 0;
-        var live = 0;
-        var count = 0;
-        var arr = new Array(15);
-        for (var i = 0; i < 15; i++) {
-            arr[i] = new Array(15);
-            for (var j = 0; j < 15; j++) {
-                arr[i][j] = chessboard[i][j];
-            }
-        }
-        arr[x][y] = num;
-        for (var i = x, j = y; i >= 0 && j >= 0;) {
-            if (arr[i][j] == num) {
-                count++;
-            } else if (arr[i][j] == 0) {
-                live += 1;
-                i = -1;
+    function withdraw() {
+        console.log("悔棋");
+        var Plist = [];
+        var Plist1 = [];
+        Plist = chessList.pop();
+        Plist1 = chessList.pop();
+        console.log(Plist);
+        console.log(Plist1);
+        chessBoard[Plist.x][Plist.y] = 0;
+        chessBoard[Plist1.x][Plist1.y] = 0;
+        //myWin[k]--;
+        // if (Plist.color === 'white') {
+        //     for (var k = 0; k < count; k++) {
+        //         if (wins[Plist.x][Plist.y][k]) {
+        //             myWin[k]--;
+        //         }
+        //     }
+        // } else {
+        //     for (var k = 0; k < count; k++) {
+        //         if (wins[Plist.x][Plist.y][k]) {
+        //             computerWin[k]--;
+        //         }
+        //     }
+        // }
+        console.log(chessList);
+        context.clearRect(0, 0, 450, 450);
+        context.drawImage(logo, 0, 0, 450, 450);
+        drawChessBoard();
+        chessList.forEach(function (item) {
+            context.beginPath();
+            context.arc(30 * item.x + 15, 30 * item.y + 15, 13, 0, 2 * Math.PI, false);
+            var gradient = context.createRadialGradient(15 + item.x * 30 - 2, 15 + item.y * 30 + 2, 13, 15 + item.x * 30 - 2, 15 + item.y * 30 - 2, 0);
+            if (item.color === 'black') {
+                gradient.addColorStop(0, "#0A0A0A");
+                gradient.addColorStop(1, "#636766");
+                context.fillStyle = gradient;
             } else {
-                death += 1;
-                i = -1;
+                gradient.addColorStop(0, "#D1D1D1");
+                gradient.addColorStop(1, "#F9F9F9");
+                context.fillStyle = gradient;
             }
-            i--;
-            j--;
-        }
-        for (var i = x, j = y; i <= 14 && j <= 14;) {
-            if (arr[i][j] == num) {
-                count++;
-            } else if (arr[i][j] == 0) {
-                live += 1;
-                i = 100;
-            } else {
-                death += 1;
-                i = 100;
-            }
-            i++;
-            j++;
-        }
-        count -= 1;
-        return model(count, death);
+            context.fill();
+
+        })
+
     }
 
-    function rightTop(x, y, num) {
-        var death = 0;
-        var live = 0;
-        var count = 0;
-        var arr = new Array(15);
-        for (var i = 0; i < 15; i++) {
-            arr[i] = new Array(15);
-            for (var j = 0; j < 15; j++) {
-                arr[i][j] = chessboard[i][j];
-            }
+    // var revertFlag = false;
+    // //悔棋事件
+    // function withdraw() {
+    //     window.confirm("确定要悔棋吗？");
+    //     var Plist = [];
+    //     Plist = chessList.pop();
+    //     if (!over && !revertFlag) {
+    //         context.clearRect(Plist.x * 30, Plist.y * 30, 30, 30);
+    //         chessBoard[Plist.x][Plist.y] = 0;
+    //         if (!me) {
+    //             for (var k = 0; k < count; k++) {
+    //                 if (wins[Plist.x][Plist.y][k]) {
+    //                     myWin[k]--;
+    //                 }
+    //             }
+    //         } else {
+    //             for (var k = 0; k < count; k++) {
+    //                 if (wins[Plist.x][Plist.y][k]) {
+    //                     computerWin[k]--;
+    //                 }
+    //             }
+    //         }
+    //         me = !me;
+    //         revertFlag = true;
+    //     }
+    // }
+    function newgame() {
+        if (confirm("开始新的游戏？")) {
+            location.reload();
         }
-        arr[x][y] = num;
-        for (var i = x, j = y; i >= 0 && j <= 14;) {
-            if (arr[i][j] == num) {
-                count++;
-            } else if (arr[i][j] == 0) {
-                live += 1;
-                i = -1;
-            } else {
-                death += 1;
-                i = -1;
-            }
-            i--;
-            j++;
-        }
-        for (var i = x, j = y; i <= 14 && j >= 0;) {
-            if (arr[i][j] == num) {
-                count++;
-            } else if (arr[i][j] == 0) {
-                live += 1;
-                i = 100;
-            } else {
-                death += 1;
-                i = 100;
-            }
-            i++;
-            j--;
-        }
-        count -= 1;
-        return model(count, death);
     }
 
-    function model(count, death) {
-        var level_one = 0;
-        var level_two = 1;
-        var level_three = 1500;
-        var level_four = 4000;
-        var level_five = 10000;
-        var level_six = 100000;
-        if (count == 1 && death == 1) {
-            return level_one;
-        } else if (count == 2) {
-            if (death == 0) {
-                return level_three;
-            }
-            if (death == 1) {
-                return level_two;
-            }
-            if (death == 0) {
-                return level_one;
-            }
-        } else if (count == 3) {
-            if (death == 0) {
-                return level_four;
-            } else if (death == 1) {
-                return level_three;
-            } else {
-                return level_one;
-            }
-        } else if (count == 4) {
-            if (death == 0) {
-                return level_five;
-            } else if (death == 1) {
-                return level_four;
-            } else {
-                return level_one;
-            }
-        } else if (count == 5) {
-            return level_six;
-        }
-        return level_one;
-    }
+
 </script>
 </body>
 </html>

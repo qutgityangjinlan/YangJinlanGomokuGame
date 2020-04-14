@@ -50,14 +50,11 @@
 
 <script type="text/javascript">
 
-  function refreshCode(){
-    document.getElementById("code").src = "validateCode?" + Math.random();
-  }
 
   $(function(){
     <c:if test="${not empty param.timeout}">
       layer.msg('连接超时,请重新登陆!', {
-        offset: 0,
+        offset: 0,/*正上方*/
         shift: 6
       });
     </c:if>
@@ -65,11 +62,7 @@
     if("${error}"){
       $('#submit').attr('value',"${error}").css('background','red');
     }
-    if("${registersuccess}"){
-    	 layer.msg('注册成功', {
-    	        offset: 0,
-    	      });
-      }
+
     if("${message}"){
       layer.msg('${message}', {
         offset: 0,
@@ -112,11 +105,6 @@
     }
   }
 
-  /**
-   * check the param if it's null or '' or undefined
-   * @param input
-   * @returns {boolean}
-   */
   function isNull(input){
     if(input == null || input == '' || input == undefined){
       return true;

@@ -10,11 +10,11 @@
 <body>
 <jsp:include page="view/include/header.jsp"/>
 <div class="am-cf admin-main">
-    <jsp:include page="view/include/sidebar.jsp"/>
+    <jsp:include page="view/include/sidebar1.jsp"/>
     <div class="admin-content">
         <div class="" style="width: 80%;float:left;">
             <!-- 聊天区 -->
-            <div class="am-scrollable-vertical" id="chat-view" style="height: 510px;">
+            <div class="am-scrollable-vertical" id="chat-view" style="height: 510px;background-image: url(${ctx}/static/source/img/backfive.png);">
                 <ul class="am-comments-list am-comments-list-flip" id="chat">
                 </ul>
 
@@ -31,12 +31,6 @@
             </div>
             <!-- 按钮区 -->
             <div class="am-btn-group am-btn-group-xs" style="float:right;">
-                <button class="am-btn am-btn-default" type="button" onclick="getConnection()"><span
-                        class="am-icon-plug"></span> 连接
-                </button>
-                <button class="am-btn am-btn-default" type="button" onclick="closeConnection()"><span
-                        class="am-icon-remove"></span> 断开
-                </button>
                 <button class="am-btn am-btn-default" type="button" onclick="checkConnection()"><span
                         class="am-icon-bug"></span> 检查
                 </button>
@@ -53,12 +47,12 @@
             <div class="am-panel-hd">
                 <h3 class="am-panel-title">在线列表 [<span id="onlinenum"></span>]</h3>
             </div>
-            <ul class="am-list am-list-static am-list-striped">
-                <li>图灵机器人
-                    <button class="am-btn am-btn-xs am-btn-danger" id="tuling" data-am-button>未上线</button>
-                </li>
-            </ul>
+            <div class="am-panel-hd">
+                <input type="button" class="button21" value="创建房间" onclick=creRoom()>
+            </div>
             <ul class="am-list am-list-static am-list-striped" id="list">
+            </ul>
+            <ul class="am-list am-list-static am-list-striped" id="rooList">
             </ul>
         </div>
     </div>
@@ -67,6 +61,15 @@
     <span class="am-icon-btn am-icon-th-list"></span></a>
 <jsp:include page="view/include/footer.jsp"/>
 <script>
+    function creRoom() {
+
+        window.location.replace("${ctx}/five-chess.jsp");
+
+        showRoom(${rooList});
+
+
+    }
+
     if ("${message}") {
         layer.msg('${message}', {
             offset: 0
@@ -78,28 +81,18 @@
             shift: 6
         });
     }
-    $("#tuling").click(function () {
-        var onlinenum = $("#onlinenum").text();
-        if ($(this).text() === "未上线") {
-            $(this).text("已上线").removeClass("am-btn-danger").addClass("am-btn-success");
-            showNotice("图灵机器人加入，你可以与其交流");
-            $('#onlinenum').text(parseInt(onlinenum) + 1);
-        } else {
-            $(this).text("未上线").removeClass("am-btn-success").addClass("am-btn-danger");
-            showNotice("图灵机器人未加入，你可以邀请她交流");
-            $('#onlinenum').text(parseInt(onlinenum) - 1);
-        }
-    });
+
 
     var wsServer = null;
     var ws = null;
-    wsServer = "ws://" + location.host + "${pageContext.request.contextPath}" + "/chatServer";	//WebServer的路径
+    wsServer = "ws://" + location.host + "${pageContext.request.contextPath}" + "/chessServer";	//WebServer的路径
     ws = new WebSocket(wsServer); //创建WebSocket对象
     ws.onopen = function (evt) {  //打开时候进行额回掉函数
         layer.msg("已经建立连接", {offset: 0}); //提示已经建立
     };
     ws.onmessage = function (evt) { //用于显示后台传递的数据
         analysisMessage(evt.data);  //解析后台传回的消息,并予以展示
+
     };
     ws.onerror = function (evt) {  //错误提示
         layer.msg("产生异常", {offset: 0});
@@ -107,44 +100,6 @@
     ws.onclose = function (evt) {//关闭提示
         layer.msg("已经关闭连接", {offset: 0});
     };
-
-    /**
-     * 连接按钮，进行连接
-     */
-    function getConnection() {
-        if (ws == null) {
-            ws = new WebSocket(wsServer); //创建WebSocket对象
-            ws.onopen = function (evt) {
-                layer.msg("成功建立连接!", {offset: 0});
-            };
-            ws.onmessage = function (evt) {
-                analysisMessage(evt.data);  //解析后台传回的消息,并予以展示
-            };
-            ws.onerror = function (evt) {
-                layer.msg("产生异常", {offset: 0});
-            };
-            ws.onclose = function (evt) {
-                layer.msg("已经关闭连接", {offset: 0});
-            };
-        } else {
-            layer.msg("连接已存在!", {offset: 0, shift: 6});
-        }
-    }
-
-    /**
-     * 关闭连接
-     */
-    function closeConnection() {
-        if (ws != null) {
-            ws.close();
-            ws = null;
-            $("#list").html("");    //清空在线列表
-            layer.msg("已经关闭连接", {offset: 0});
-        } else {
-            layer.msg("未开启连接", {offset: 0, shift: 6});
-        }
-    }
-
     /**
      * 检查连接
      */
@@ -156,12 +111,6 @@
         }
     }
 
-    $("#message").keyup(function (event) {
-        if (event.keyCode===13){
-            sendMessage();
-        }
-
-    });
     /**
      * 发送信息给后台
      */
@@ -175,12 +124,7 @@
         if (message == null | message === "") {
             layer.msg("请输入内容！", {offset: 0, shift: 6});
         }
-        if($("#tuling").text() === "已上线"){
-            console.log("图灵机器人开启");
-            tuling(message);
-        }else{
-            console.log("图灵机器人未开启");
-        }
+
         ws.send(JSON.stringify({  //发送信息给后台，发送的格式为JSON:{ message:{cotent:message,from:"userid",to:to,time:Daee()},type:"message" }
             message: {
                 content: message,
@@ -215,7 +159,10 @@
         if (message.list !== null && message.list !== undefined) {     //如果列表部位空，显示好友在线列表
             showOnline(message.list);
         }
+
+
     }
+
 
     function showChat(message) {
         var to = message.to == null || message.to === "" ? "全体成员" : message.to;   //获取接收人
@@ -259,10 +206,23 @@
         });
         $("#onlinenum").text($("#list li").length);     //获取在线人数
     }
+    function showRoom(rooList) {
+        $("#rooList").html("");    //清空在线列表
+        console.log(rooList.length);
+        $.each(rooList, function (index, item) {     //添加私聊按钮
+            var li = "<li>" + item + "[创建的房间]</li>";
+            if ('${userid}' !== item) {    //排除自己
+                li = "<li>" + item + "<span class=\"am-icon-phone\">房间人数<span> [<span id=\"roomnum\"></span>]<button type=\"button\" class=\"am-btn am-btn-xs am-btn-primary am-round\" onclick=\"window.location.replace(\"${ctx}/five-chess.jsp\");\"><span class=\"am-icon-phone\"><span> 加入房间</button></li>";
+            }
+            $("#rooList").append(li);
+        });
+        $("#roomnum").text($("#rooList li").length);     //获取在线人数
+    }
+
 
     function addChat(user) {
 
-        alert('和'+user+'私聊');
+        alert('和' + user + '私聊');
         var sendto = $("#sendto");
         var i = 1;
         var receive = (sendto.text() === ("全体成员" ? "" : i = 0));
@@ -271,23 +231,6 @@
         }
         sendto.text(user);
 
-    }
-    function tuling(message) {
-        var html;
-        $.getJSON("http://www.tuling123.com/openapi/api?key=761ea47c601549ecb80efe581ee2dbc6&info=" + message, function (data) {
-            if (data.code === 100000) {
-                html = "<li class=\"am-comment am-comment-primary\"><a href=\"#link-to-user-home\"><img width=\"48\" height=\"48\" class=\"am-comment-avatar\" alt=\"\" src=\"${ctx}/static/img/robot.jpg\"></a><div class=\"am-comment-main\">\n" +
-                    "<header class=\"am-comment-hd\"><div class=\"am-comment-meta\">   <a class=\"am-comment-author\" href=\"#link-to-user\">Robot</a> 发表于<time> " + getDateFull() + "</time> 发送给: ${userid}</div></header><div class=\"am-comment-bd\"> <p>" + data.text + "</p></div></div></li>";
-            }
-            if (data.code === 200000) {
-                html = "<li class=\"am-comment am-comment-primary\"><a href=\"#link-to-user-home\"><img width=\"48\" height=\"48\" class=\"am-comment-avatar\" alt=\"\" src=\"${ctx}/static/img/robot.jpg\"></a><div class=\"am-comment-main\">\n" +
-                    "<header class=\"am-comment-hd\"><div class=\"am-comment-meta\">   <a class=\"am-comment-author\" href=\"#link-to-user\">Robot</a> 发表于<time> " + getDateFull() + "</time> 发送给: ${userid}</div></header><div class=\"am-comment-bd\"> <p>" + data.text + "</p><a href=\"" + data.url + "\" target=\"_blank\">" + data.url + "</a></div></div></li>";
-            }
-            $("#chat").append(html);
-            var chat = $("#chat-view");
-            chat.scrollTop(chat[0].scrollHeight);
-            $("#message").val("");  //清空输入区
-        });
     }
 
     function checkinfo(item) {

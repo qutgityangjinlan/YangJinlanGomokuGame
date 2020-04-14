@@ -26,11 +26,12 @@
     <form action="<%=path%>/user/register" method="post" onsubmit="return checkRegisterForm()">
         <div class="key">
             <input type="text" id="userid" name="userid" placeholder="账号">
-            <div class="Error">${registerError}</div>
+            <div class="Error" style="color: red">${registerError}</div>
         </div>
         <div class="key">
             <input type="password" id="password" name="password" placeholder="密码">
         </div>
+
         <div class="signin">
             <input type="submit" id="submit" value="register">
         </div>
@@ -55,13 +56,15 @@
             return false;
         }
 
-            //if(username != 'Amaya' || password != '123456'){
-            //	$('#submit').attr('value','账号或密码错误!!!').css('background','red');
-            //	return false;
-        //}
         else {
-            $('#submit').attr('value', '注册成功');
+            $('#submit').attr('value', '注册成功,去登录~');
             return true;
+        }
+
+        if("${registersuccess}"){
+            layer.msg('注册成功', {
+                offset: 0,
+            });
         }
     }
 

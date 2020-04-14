@@ -1,19 +1,13 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="YangJinlanGomokuGame:war exploded">
-    <output-path>$PROJECT_DIR$/target/YangJinlanGomokuGame</output-path>
-    <properties id="maven-jee-properties">
-      <options>
-        <exploded>true</exploded>
-        <module>YangJinlanGomokuGame</module>
-        <packaging>war</packaging>
-      </options>
-    </properties>
+    <output-path>$PROJECT_DIR$/out/artifacts/YangJinlanGomokuGame_war_exploded</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="YangJinlanGomokuGame" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="lib" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.47" />
           <element id="library" level="project" name="Maven: org.springframework:spring-websocket:4.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:4.2.4.RELEASE" />
@@ -62,12 +56,14 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-test:4.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons-core:1.4.1.RELEASE" />
-          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.2.6" />
-          <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:1.2.3" />
+          <element id="library" level="project" name="Maven: com.baomidou:mybatis-plus:3.3.1" />
+          <element id="library" level="project" name="Maven: com.baomidou:mybatis-plus-extension:3.3.1" />
+          <element id="library" level="project" name="Maven: com.baomidou:mybatis-plus-core:3.3.1" />
+          <element id="library" level="project" name="Maven: com.baomidou:mybatis-plus-annotation:3.3.1" />
+          <element id="library" level="project" name="Maven: com.github.jsqlparser:jsqlparser:3.1" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.5.3" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:2.0.3" />
         </element>
-      </element>
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/YangJinlanGomokuGame/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="YangJinlanGomokuGame/web/Web" />
     </root>
