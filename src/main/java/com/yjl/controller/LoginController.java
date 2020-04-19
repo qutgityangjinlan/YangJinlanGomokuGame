@@ -30,7 +30,8 @@ public class LoginController {
 	//	登陆
 	//@ModelAttribute注解用于将方法的参数或方法的返回值绑定到指定的模型属性上，并返回给Web视图
 	@RequestMapping("/login")
-	public String login(@ModelAttribute  User user,HttpServletRequest request, HttpSession session,RedirectAttributes redirectAttributes, WordDefined defined){
+	public String login(@ModelAttribute  User user,HttpServletRequest request,RedirectAttributes redirectAttributes, WordDefined defined){
+		//获取当前的subject
 		Subject subject= SecurityUtils.getSubject();
 		UsernamePasswordToken token=new UsernamePasswordToken(user.getUserid(),user.getPassword());
 		try

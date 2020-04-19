@@ -24,10 +24,10 @@ public  class testtest {
 //		System.out.println(list.get(0).getPassword());
 //		System.out.println(userServiceImpl.selectUserByUserId("admin").getNickname());
 //		User user=new User();
-//		user.setUserid("SinceNovember");
-//		user.setNickname("lyda");
-//		user.setPassword("6666");
-//		System.out.println(userServiceImpl.deleteUser("SinceNovember"));
+//		user.setUserid("aaa");
+//		user.setNickname("aaa");
+//		user.setPassword("aaa");
+//		System.out.println(userServiceImpl.deleteUser("aaa"));
 //		System.out.println(userLogServiceImpl.selectAllLog(0, 1));
 //		System.out.println(userLogServiceImpl.selectLogByUserid("admin", 0, 5).size());
 //		UserLog userLog=new UserLog();

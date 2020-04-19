@@ -3,11 +3,11 @@ package com.yjl.controller;
 import com.yjl.pojo.Score;
 import com.yjl.pojo.User;
 import com.yjl.pojo.UserLog;
+import com.yjl.service.UserLogService;
 import com.yjl.service.UserScoreService;
-import com.yjl.service.impl.UserLogServiceImpl;
-import com.yjl.service.impl.UserScoreImpl;
-import com.yjl.service.impl.UserServiceImpl;
+import com.yjl.service.UserService;
 import com.yjl.utils.DateUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,12 +29,12 @@ import java.util.List;
 @Controller
 @SessionAttributes({"userid"})
 public class UserController {
-	@Resource
-	private UserServiceImpl userServiceImpl;
-	@Resource
-	private UserLogServiceImpl userLogServiceImpl;
-	@Resource
-	private UserScoreImpl userScoreImpl;
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private UserLogService userLogService;
+	@Autowired
+	private UserScoreService userScoreService;
 	DateUtil dateUtil=new DateUtil();
 	//	展示用户信息
 	//@PathVariable接收请求路径中占位符的值，跟RequestMapping中的参数一致
@@ -42,8 +42,8 @@ public class UserController {
 	public ModelAndView information(@PathVariable("userid")String userid)
 	{
 		ModelAndView modelAndView=new ModelAndView();
-		User user=userServiceImpl.selectUserByUserId(userid);
-		Score score = userScoreImpl.selectByUserId(userid);
+		User user=userService.selectUserByUserId(userid);
+		Score score = userScoreService.selectByUserId(userid);
 		modelAndView.addObject("user", user);
 		modelAndView.addObject("score", score);
 		modelAndView.setViewName("information");
@@ -52,9 +52,9 @@ public class UserController {
 	//	信息设置
 	@RequestMapping("infosetting/{userid}")
 	public ModelAndView infosetting(@PathVariable("userid")String userid,HttpServletRequest request,Model model){
-		Score score=userScoreImpl.selectByUserId(userid);
+		Score score=userScoreService.selectByUserId(userid);
 		ModelAndView modelAndView=new ModelAndView();
-		User user=userServiceImpl.selectUserByUserId(userid);
+		User user=userService.selectUserByUserId(userid);
 		modelAndView.addObject("user", user);
 		model.addAttribute("score",score);
 		modelAndView.setViewName("info-setting");
@@ -64,7 +64,7 @@ public class UserController {
 	@RequestMapping("/updateUser/{userid}")
 	public String updateUser(User user,@PathVariable("userid")String userid,RedirectAttributes redirectAttributes,HttpServletRequest request){
 		user.setUserid(userid);
-		boolean flag=userServiceImpl.updateUser(user);
+		boolean flag=userService.updateUser(user);
 		if(flag)
 		{
 			UserLog userLog=new UserLog();
@@ -74,7 +74,7 @@ public class UserController {
 			userLog.setType("修改");
 			userLog.setDetail("修改资料");
 			userLog.setIp(ip);
-			userLogServiceImpl.insertLog(userLog);
+			userLogService.insertLog(userLog);
 			redirectAttributes.addFlashAttribute("message", "["+userid+"]资料修改成功!");
 			return "redirect:/information/"+userid;
 		}
@@ -102,7 +102,7 @@ public class UserController {
 		User user=new User();
 		user.setUserid(userid);
 		user.setProfilehead(imageurlnotag);
-		boolean flag=userServiceImpl.updateUser(user);
+		boolean flag=userService.updateUser(user);
 		if(flag)
 		{
 			UserLog userLog=new UserLog();
@@ -112,7 +112,7 @@ public class UserController {
 			userLog.setType("修改");
 			userLog.setDetail("修改头像");
 			userLog.setIp(ip);
-			userLogServiceImpl.insertLog(userLog);
+			userLogService.insertLog(userLog);
 			redirectAttributes.addFlashAttribute("message", "["+userid+"]头像上传成功!");
 			return "redirect:/information/"+userid;
 		}
@@ -126,14 +126,14 @@ public class UserController {
 	@RequestMapping("/insertOrUpdateScore")
 	@ResponseBody
 	public Boolean CollectScore(@RequestParam("userid")String userid){
-			Score score = userScoreImpl.selectByUserId(userid);
+			Score score = userScoreService.selectByUserId(userid);
 			if (score!=null){
 				score.setScore(score.getScore()+10);
 				score.setLevel((int)score.getScore()/20+"段");
 				score.setTime(dateUtil.getDateformat());
-				userScoreImpl.updateByUserId(score);
+				userScoreService.updateByUserId(score);
 			}else {
-				userScoreImpl.insertScore(new Score(){{
+				userScoreService.insertScore(new Score(){{
 					setUserid(userid);
 					setScore(10);
 					setTime(dateUtil.getDateformat());
@@ -153,8 +153,8 @@ public class UserController {
 		int pageSize=(Integer) request.getSession().getAttribute("pageSize");
 		int count;
 		List<UserLog> loglist=new ArrayList<UserLog>();
-		loglist=userLogServiceImpl.selectLogByUserid(userid, page, pageSize);
-		count=userLogServiceImpl.selectLogCountByUserid(userid, pageSize);
+		loglist=userLogService.selectLogByUserid(userid, page, pageSize);
+		count=userLogService.selectLogCountByUserid(userid, pageSize);
 		request.getSession().setAttribute("loglist", loglist);
 		request.getSession().setAttribute("count", count);
 		return "log";
@@ -164,7 +164,7 @@ public class UserController {
 	public void gethead(@PathVariable("userid")String userid,HttpServletRequest request,HttpServletResponse response) throws IOException
 	{
 		String realurl=request.getServletContext().getRealPath("/");
-		String imageurl=userServiceImpl.selectUserByUserId(userid).getProfilehead();
+		String imageurl=userService.selectUserByUserId(userid).getProfilehead();
 		String url=realurl+imageurl;
 		InputStream inputStream=new FileInputStream(url);
 		ServletOutputStream outputStream=response.getOutputStream();
@@ -196,7 +196,7 @@ public class UserController {
 	@RequestMapping("system-setting/{userid}")
 	public String systemsetting(@PathVariable("userid")String userid,HttpServletRequest request)
 	{
-		User user=userServiceImpl.selectUserByUserId(userid);
+		User user=userService.selectUserByUserId(userid);
 		request.setAttribute("user", user);
 		return "system-setting";
 	}
@@ -208,7 +208,7 @@ public class UserController {
 		User user=new User();
 		user.setUserid(userid);
 		user.setStatus(secrecy);
-		boolean flag=userServiceImpl.updateUser(user);
+		boolean flag=userService.updateUser(user);
 		if(flag)
 		{
 			redirectAttributes.addFlashAttribute("message", "系统设置修改成功!");
@@ -223,7 +223,7 @@ public class UserController {
 	@RequestMapping("otherinfo/{userid}")
 	public String otherinformation(@PathVariable("userid")String userid,HttpServletRequest request,RedirectAttributes redirectAttributes)
 	{
-		int status=userServiceImpl.selectUserByUserId(userid).getStatus();
+		int status=userService.selectUserByUserId(userid).getStatus();
 		if(status==-1)
 		{
 			redirectAttributes.addFlashAttribute("error", userid+"的信息未公开!");

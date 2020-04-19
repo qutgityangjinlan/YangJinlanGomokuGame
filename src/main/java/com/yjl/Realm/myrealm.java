@@ -1,21 +1,19 @@
 package com.yjl.Realm;
 
 import com.yjl.pojo.User;
-import com.yjl.service.impl.UserServiceImpl;
+import com.yjl.service.UserService;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
 
 public class myrealm extends AuthorizingRealm{
-	@Resource
-	private UserServiceImpl userServiceImpl;
+	@Autowired
+	private UserService userService;
 
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
@@ -24,15 +22,46 @@ public class myrealm extends AuthorizingRealm{
 	}
 
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-		String username=(String) token.getPrincipal();
-		System.out.println("userid:"+username);
-		User user=userServiceImpl.selectUserByUserId(username);
-		if(user!=null)
-		{
-			SecurityUtils.getSubject().getSession().setAttribute("currentUser", user);
-			AuthenticationInfo authenticationInfo=new SimpleAuthenticationInfo(user.getUserid(),user.getPassword(),"myRealm");
-			return authenticationInfo;
+		//把AuthenticationToken 转换为UsernamePasswordToken
+		UsernamePasswordToken upToken = (UsernamePasswordToken) token;
+		//从UsernamePasswordToken中获取username
+		String username = upToken.getUsername();
+		String password = upToken.getPassword().toString();
+		//调用数据库的方法，从数据库中查询username对应的用户记录
+		System.out.println("从数据库获取数据");
+		User user=userService.selectUserByUserId(username);
+		String uname = user.getUserid();
+		String pwd = user.getPassword();
+		//若用户不存在，则可以抛出UnknownAccountException异常
+		if ("".equals(username)){
+			throw new UnknownAccountException("用户不存在");
 		}
-		return null;
+
+		//根据用户信息的情况，决定是否需要【抛出其他的UsernamePasswordToken异常.
+
+		//根据用户的情况，来构建AuthenticationInfo 对象并返回，通常使用的实现类为SimpleAuthenticationInfo
+		//以下信息是从数据库获取的
+		//principal：认证的实体信息，可以是username，也可以是数据表对应的用户的实体对象
+		Object principal = uname;
+		//credentials :密码
+		Object credentials = pwd;
+		//realmName：当前realm对象的name,调用父类的getName()方法即可
+		String realmName = getName();
+		SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(principal,credentials,realmName);
+		return info;
+
+
+
+//
+//		String username=(String) token.getPrincipal();
+//		System.out.println("userid:"+username);
+//		User user=userService.selectUserByUserId(username);
+//		if(user!=null)
+//		{
+//			SecurityUtils.getSubject().getSession().setAttribute("currentUser", user);
+//			AuthenticationInfo authenticationInfo=new SimpleAuthenticationInfo(user.getUserid(),user.getPassword(),"myRealm");
+//			return authenticationInfo;
+//		}
+//		return null;
 	}
 }

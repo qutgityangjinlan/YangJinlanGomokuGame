@@ -31,7 +31,7 @@
         <div class="key">
             <input type="password" id="password" name="password" placeholder="密码">
         </div>
-
+        
         <div class="signin">
             <input type="submit" id="submit" value="register">
         </div>

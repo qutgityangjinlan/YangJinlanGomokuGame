@@ -1,6 +1,4 @@
-/**
- * Created by Administrator on 2016/2/15.
- */
+
 var INFINITE = 999999;
 var PD = {
     A1: 0,
