@@ -155,7 +155,7 @@ h1 {
 }
 
 .login-form {
-    background: #caebfb;
+    background: url(../img/backg1.jpg) 100%;
     position: relative;
     width: 30%;
     margin: 3% auto 0 auto;
@@ -180,7 +180,7 @@ h1 {
     font-weight: 600;
     font-size: 2em;
     color: #fff;
-    background: #89d7ff;
+    background:#caebfb;
     height: 50px;
     border-top-left-radius: 10px;
     -webkit-border-top-left-radius: 10px;
@@ -223,7 +223,7 @@ input[type="submit"] {
     color: #fff;
     outline: none;
     border: none;
-    background: #89d7ff;
+    background:#caebfb;
     width: 100%;
     padding: 18px 0;
     border-bottom-left-radius: 15px;

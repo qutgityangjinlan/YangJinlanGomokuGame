@@ -21,7 +21,6 @@
         <div class="am-tabs am-margin" data-am-tabs>
             <ul class="am-tabs-nav am-nav am-nav-tabs">
                 <li class="am-active"><a href="#tab1">基本设置</a></li>
-                <li ><a href="#tab2">修改头像</a></li>
                 <li ><a href="#tab3">修改密码</a></li>
             </ul>
 				<div class="am-tabs-bd">
@@ -67,31 +66,6 @@
                           </form>
                           </div>
 
- 					<div class="am-tab-panel am-fade" id="tab2">
-                    <form class="am-form am-form-horizontal" action="${ctx}/upload/${userid}" enctype="multipart/form-data" method="post" onsubmit="return checkFileType();" style="text-align: center;">
-                        <div style="text-align: center;margin-bottom: 10px">
-                            <img class="am-circle" src="${ctx}/${user.profilehead}" width="140" height="140" alt="加载失败"/>
-                        </div>
-                        <div class="am-form-group am-form-file">
-                            <button type="button" class="am-btn am-btn-secondary am-btn-sm">
-                                <i class="am-icon-cloud-upload"></i> 选择要上传的文件</button>
-                            <input id="file" type="file" name="file" multiple>
-                        </div>
-                        <div id="file-list"></div>
-                        <button type="submit" class="am-btn am-round am-btn-success"><span class="am-icon-upload"></span> 上传头像</button>
-                        <script>
-                            $(function() {
-                                $('#file').on('change', function() {
-                                    var fileNames = '';
-                                    $.each(this.files, function() {
-                                        fileNames += '<span class="am-badge">' + this.name + '</span> ';
-                                    });
-                                    $('#file-list').html(fileNames);
-                                });
-                            });
-                        </script>
-                    </form>
-                </div>
                   <div class="am-tab-panel am-fade" id="tab3">
                     <form class="am-form am-form-horizontal" data-am-validator action="${ctx}/modifypassword/${userid}" method="post">
                         <div class="am-form-group">

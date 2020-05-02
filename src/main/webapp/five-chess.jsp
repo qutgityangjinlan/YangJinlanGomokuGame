@@ -124,6 +124,7 @@
     }
 
     function exitRoom() {
+
         window.location.replace("${ctx}/createRoom.jsp");
     }
 

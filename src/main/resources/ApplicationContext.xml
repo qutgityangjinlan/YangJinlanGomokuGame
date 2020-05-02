@@ -9,6 +9,7 @@
                         http://www.springframework.org/schema/context/spring-context-4.0.xsd
                         http://www.springframework.org/schema/tx
                         http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<!--     spring的配置文件，主要配置和业务逻辑有关的，数据库，事务控制-->
 	<!--      加载所有的service，指定所在的包 -->
 	<context:component-scan base-package="com.yjl.service"/>
 	<!-- 	加载数据库属性 -->
@@ -30,7 +31,7 @@
 		<!-- 获取连接最大等待时间 -->
 		<property name="maxWait" value="${maxWait}"/>
 	</bean>
-	<!-- 	加载数据库会话工厂 -->
+	<!-- 	加载数据库会话工厂，配置和MyBatis的整合 -->
 	<bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
 		<!-- 	    指定数据源 -->
 		<property name="dataSource" ref="dataSource"/>
@@ -38,7 +39,7 @@
 		<!-- 		指定mybatis mapper文件 -->
 		<property name="mapperLocations" value="classpath:com/yjl/mapper/*.xml"/>
 	</bean>
-	<!-- 	配置自动扫描dao包 -->
+	<!-- 	配置自动扫描dao包 ，将mybatis接口的实现加入到ioc容器中-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.yjl.dao"/>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
@@ -71,8 +72,7 @@
 			</value>
 		</property>
 	</bean>
-	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor">
-	</bean>
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
 	<bean class="org.apache.shiro.spring.LifecycleBeanPostProcessor" depends-on="lifecycleBeanPostProcessor"/>
 	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
 		<property name="securityManager" ref="securityManager"/>

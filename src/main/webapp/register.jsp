@@ -26,7 +26,7 @@
     <form action="<%=path%>/user/register" method="post" onsubmit="return checkRegisterForm()">
         <div class="key">
             <input type="text" id="userid" name="userid" placeholder="账号">
-            <div class="Error" style="color: red">${registerError}</div>
+            <div class="Error" id = "userError" style="color: red">${registerError}</div>
         </div>
         <div class="key">
             <input type="password" id="password" name="password" placeholder="密码">
@@ -43,6 +43,8 @@
     function checkRegisterForm() {
         var userid = $('#userid').val();
         var password = $('#password').val();
+        var uerror = $('#userError').val();
+
         if (isNull(userid) && isNull(password)) {
             $('#submit').attr('value', '请输入账号和密码!!!').css('background', 'red');
             return false;
@@ -55,7 +57,6 @@
             $('#submit').attr('value', '请输入密码!!!').css('background', 'red');
             return false;
         }
-
         else {
             $('#submit').attr('value', '注册成功,去登录~');
             return true;

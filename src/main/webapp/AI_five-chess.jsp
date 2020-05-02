@@ -313,6 +313,8 @@
     }
 
     function withdraw() {
+
+        window.confirm("确定要悔棋吗？");
         console.log("悔棋");
         var Plist = [];
         var Plist1 = [];
@@ -322,20 +324,6 @@
         console.log(Plist1);
         chessBoard[Plist.x][Plist.y] = 0;
         chessBoard[Plist1.x][Plist1.y] = 0;
-        //myWin[k]--;
-        // if (Plist.color === 'white') {
-        //     for (var k = 0; k < count; k++) {
-        //         if (wins[Plist.x][Plist.y][k]) {
-        //             myWin[k]--;
-        //         }
-        //     }
-        // } else {
-        //     for (var k = 0; k < count; k++) {
-        //         if (wins[Plist.x][Plist.y][k]) {
-        //             computerWin[k]--;
-        //         }
-        //     }
-        // }
         console.log(chessList);
         context.clearRect(0, 0, 450, 450);
         context.drawImage(logo, 0, 0, 450, 450);

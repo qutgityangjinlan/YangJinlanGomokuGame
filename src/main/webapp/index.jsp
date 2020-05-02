@@ -14,7 +14,8 @@
     <div class="admin-content">
         <div class="" style="width: 80%;float:left;">
             <!-- 聊天区 -->
-            <div class="am-scrollable-vertical" id="chat-view" style="height: 510px;">
+            <div class="am-scrollable-vertical" id="chat-view"
+                 style="height: 510px;background-image: url(${ctx}/static/source/img/backg00.jpg);background-size:100% 100%;">
                 <ul class="am-comments-list am-comments-list-flip" id="chat">
                 </ul>
 
@@ -209,7 +210,7 @@
         if (message.type === "message") {	//如果格式为message则展示数据到
             showChat(message.message);
         }
-        if (message.type == "notice") {	//如果为notice则广播
+        if (message.type === "notice") {	//如果为notice则广播
             showNotice(message.message);
         }
         if (message.list !== null && message.list !== undefined) {     //如果列表部位空，显示好友在线列表

@@ -24,7 +24,7 @@
 
   </div>
   <div class="clear"> </div>
-  <div class="avtar"><img src="${pageContext.request.contextPath }/static/source/img/tou1.png" /></div>
+  <div class="avtar"><img src="${pageContext.request.contextPath }/static/source/img/tou7.jpg" /></div>
   <form id="login-form" action="<%=path%>/user/login" method="post" onsubmit="return checkLoginForm()">
     <div class="key">
       <input type="text" id="username" name="userid" placeholder="请输入账号" >
@@ -49,19 +49,7 @@
 </div>
 
 <script type="text/javascript">
-
-
   $(function(){
-    <c:if test="${not empty param.timeout}">
-      layer.msg('连接超时,请重新登陆!', {
-        offset: 0,/*正上方*/
-        shift: 6
-      });
-    </c:if>
-
-    if("${error}"){
-      $('#submit').attr('value',"${error}").css('background','red');
-    }
 
     if("${message}"){
       layer.msg('${message}', {

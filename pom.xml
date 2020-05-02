@@ -61,7 +61,7 @@
     </dependency>
     <!-- junit 配置开始 -->
 
-    <!-- jstl标签类 配置开始 -->
+    <!-- jstl核心标签类 配置开始 -->
     <dependency>
       <groupId>jstl</groupId>
       <artifactId>jstl</artifactId>
@@ -125,7 +125,7 @@
       <version>2.2.3</version>
     </dependency>
 
-    <!-- slf4j 配置开始,slf4j-api是核心包 -->
+    <!-- slf4j 配置开始,slf4j-api是核心包  slf4j只是一个日志标准，并不是日志系统的具体实现-->
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
@@ -190,12 +190,13 @@
       <version>1.2.5</version>
     </dependency>
     <!-- 	shiro结束 -->
-    <!-- commons 配置开始 -->
+    <!-- commons 配置开始 配置管理类库 从properties或者xml文件中加载软件的配置信息-->
     <dependency>
       <groupId>commons-dbcp</groupId>
       <artifactId>commons-dbcp</artifactId>
       <version>1.4</version>
     </dependency>
+    <!--用于处理JavaBeans。它利用Java的反射机制，从动态的生成对bean的getter和setter的调用代码，到模拟创建一个动态的bean-->
     <dependency>
       <groupId>commons-beanutils</groupId>
       <artifactId>commons-beanutils</artifactId>
@@ -239,6 +240,7 @@
       <artifactId>spring-web</artifactId>
       <version>${spring.version}</version>
     </dependency>
+    <!--Spring对于object/xml映射的支持，可以让JAVA与XML之间来回切换-->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-oxm</artifactId>
