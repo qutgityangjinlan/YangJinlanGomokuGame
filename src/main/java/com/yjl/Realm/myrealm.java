@@ -27,8 +27,10 @@ public class myrealm extends AuthorizingRealm{
 		UsernamePasswordToken upToken = (UsernamePasswordToken) token;
 		//从UsernamePasswordToken中获取username
 		String username = upToken.getUsername();
+		String password = String.valueOf(upToken.getPassword());
 		//调用数据库的方法，从数据库中查询username对应的用户记录
 		System.out.println("从数据库获取数据");
+		System.out.println("password:"+password);
 		User user=userService.selectUserByUserId(username);
 		System.out.println("userid:"+username);
 		if(user!=null){
@@ -36,9 +38,8 @@ public class myrealm extends AuthorizingRealm{
 			System.out.println("userid:"+uname);
 			String pwd = user.getPassword();
 			//若用户不存在，则可以抛出UnknownAccountException异常
-			System.out.println("从数据库获取数据");
-			if(pwd.equals("")){
-				throw new IncorrectCredentialsException("密码为空");
+		   if(!pwd.equals(password)){
+				throw new IncorrectCredentialsException("密码错误");
 			}
 			//根据用户信息的情况，决定是否需要【抛出其他的UsernamePasswordToken异常.
 			//根据用户的情况，来构建AuthenticationInfo 对象并返回，通常使用的实现类为SimpleAuthenticationInfo

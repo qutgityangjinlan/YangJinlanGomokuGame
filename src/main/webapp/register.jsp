@@ -6,6 +6,7 @@
 <head>
     <title>GomokuGame | 登录</title>
     <link href="${pageContext.request.contextPath }/static/source/css/login.css" rel='stylesheet' type='text/css'/>
+    <script src="${pageContext.request.contextPath }/static/plugins/jquery/jquery-3.4.1.js"></script>
     <script src="${pageContext.request.contextPath }/static/plugins/jquery/jquery-2.1.4.min.js"></script>
     <script src="${pageContext.request.contextPath }/static/plugins/layer/layer.js"></script>
 </head>
@@ -25,34 +26,56 @@
     <div class="avtar"><img src="${pageContext.request.contextPath }/static/source/img/tou1.png"/></div>
     <form action="<%=path%>/user/register" method="post" onsubmit="return checkRegisterForm()">
         <div class="key">
-            <input type="text" id="userid" name="userid" placeholder="账号">
-            <div class="Error" id = "userError" style="color: red">${registerError}</div>
+            <input type="text" id="userid" name="userid" placeholder="账号" onblur=checkUser()>
         </div>
         <div class="key">
             <input type="password" id="password" name="password" placeholder="密码">
         </div>
         
         <div class="signin">
-            <input type="submit" id="submit" value="register">
+            <input type="submit" id="submit" value="注册">
         </div>
     </form>
 </div>
 
 <script>
+    function checkUser() {
+        var f = false;
+        var name = $('#userid').val().trim();
+        if(name === ""){
+            $('#submit').attr('value', '请输入账号!!!').css('background', 'red');
+        }else{
+            $.ajax({
+                url:"<%=path%>/user/checkRegister",
+                data:{"userid":name},
+                type:"post",
+                dataType:"json",
+                success:function (data) {
+                    if(data.msg ==="false"){
+                        $('#submit').attr('value', '用户名已存在!请直接登录').css('background', 'red');
+                    }else {
+                        $('#submit').attr('value', '注册').css('background', 'pink');
+                        f = true;
+                    }
+
+                }
+            });
+        }
+        return f ;
+    }
 
     function checkRegisterForm() {
         var userid = $('#userid').val();
         var password = $('#password').val();
-        var uerror = $('#userError').val();
 
         if (isNull(userid) && isNull(password)) {
             $('#submit').attr('value', '请输入账号和密码!!!').css('background', 'red');
             return false;
         }
-        if (isNull(userid)) {
-            $('#submit').attr('value', '请输入账号!!!').css('background', 'red');
-            return false;
-        }
+        // if (isNull(userid)) {
+        //     $('#submit').attr('value', '请输入账号!!!').css('background', 'red');
+        //     return false;
+        // }
         if (isNull(password)) {
             $('#submit').attr('value', '请输入密码!!!').css('background', 'red');
             return false;
@@ -60,12 +83,6 @@
         else {
             $('#submit').attr('value', '注册成功,去登录~');
             return true;
-        }
-
-        if("${registersuccess}"){
-            layer.msg('注册成功', {
-                offset: 0,
-            });
         }
     }
 
@@ -75,7 +92,7 @@
      * @returns {boolean}
      */
     function isNull(input) {
-        if (input == null || input == '' || input == undefined) {
+        if (input == null || input === '' || input === undefined) {
             return true;
         } else {
             return false;
