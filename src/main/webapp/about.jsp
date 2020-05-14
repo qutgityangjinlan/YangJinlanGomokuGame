@@ -3,18 +3,18 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>GomokuGame | 关于</title>
+    <title>五子棋游戏平台 | 关于</title>
     <jsp:include page="view/include/commonfile.jsp"/>
 </head>
 <body>
 <jsp:include page="view/include/header.jsp"/>
 <div class="am-cf admin-main">
-    <jsp:include page="view/include/sidebar1.jsp"/>
+    <jsp:include page="view/include/sidebar.jsp"/>
 
     <!-- content start -->
     <div class="admin-content">
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">关于</strong> / <small>about</small></div>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">关于</strong></div>
         </div>
         <div class="am-tabs am-margin" data-am-tabs>
             <ul class="am-tabs-nav am-nav am-nav-tabs">
@@ -26,10 +26,10 @@
                 <div class="am-tab-panel am-fade am-in am-active" id="tab1">
                     <hr>
                     <blockquote>
-                        <p>GomokuGame主要使用SSM框架,即Spring + Spring MVC + Mybatis</p>
-                        <p>通讯使用的是websocket</p>
-                        <p>数据库使用的是Mysql</p>
-                        <p>前端框架采用的是<a href="http://amazeui.shopxo.net/" target="_blank">Amaze UI</a>,弹窗控件和分页控件采用的是<a href="https://layer.layui.com/" target="_blank">Layer</a>和<a href="https://www.layui.com/" target="_blank">Laypage</a></p>
+                        <p>五子棋游戏平台使用SSM框架,即Spring + Spring MVC + Mybatis</p>
+                        <p>网络通讯使用websocket协议</p>
+                        <p>数据库使用Mysql</p>
+                        <p>前端框架采用<a href="http://amazeui.shopxo.net/" target="_blank">Amaze UI框架</a></p>
                     </blockquote>
                 </div>
 

@@ -3,7 +3,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>GomokuGame | 系统日志</title>
+    <title>五子棋游戏平台 | 系统日志</title>
     <jsp:include page="view/include/commonfile.jsp"/>
 </head>
 <body>
@@ -14,7 +14,7 @@
     <!-- content start -->
     <div class="admin-content">
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">系统日志</strong> / <small>log</small></div>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">系统日志</strong></div>
         </div>
         <div class="am-tabs am-margin">
             <table class="am-table am-table-striped">

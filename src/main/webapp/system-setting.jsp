@@ -3,7 +3,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>GomokuGame | 系统设置</title>
+    <title>五子棋游戏平台 | 系统设置</title>
     <jsp:include page="view/include/commonfile.jsp"/>
 </head>
 <body>
@@ -15,7 +15,7 @@
     <div class="admin-content">
 
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">系统设置</strong> / <small>form</small></div>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">系统设置</strong></div>
         </div>
 
         <div class="am-tabs am-margin" data-am-tabs>

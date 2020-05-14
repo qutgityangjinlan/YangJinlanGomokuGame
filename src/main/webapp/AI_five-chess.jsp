@@ -18,7 +18,7 @@
     <div class="admin-content">
         <h1 class="biaoti">人机对战五子棋</h1>
         <input type="button" class="button3" id="button3" onclick="withdraw()" value="悔棋"/>
-        <input type="button" class="button2" onclick="newgame()" value="重新开始"/>
+        <input type="button" class="button2" onclick="restart()" value="重新开始"/>
         <div class="am-panel am-pa el-default" style="float:right;width: 20%;">
             <div class="am-panel-hd">
                 <h3 class="am-panel-title">人机对战</h3>
@@ -347,33 +347,7 @@
 
     }
 
-    // var revertFlag = false;
-    // //悔棋事件
-    // function withdraw() {
-    //     window.confirm("确定要悔棋吗？");
-    //     var Plist = [];
-    //     Plist = chessList.pop();
-    //     if (!over && !revertFlag) {
-    //         context.clearRect(Plist.x * 30, Plist.y * 30, 30, 30);
-    //         chessBoard[Plist.x][Plist.y] = 0;
-    //         if (!me) {
-    //             for (var k = 0; k < count; k++) {
-    //                 if (wins[Plist.x][Plist.y][k]) {
-    //                     myWin[k]--;
-    //                 }
-    //             }
-    //         } else {
-    //             for (var k = 0; k < count; k++) {
-    //                 if (wins[Plist.x][Plist.y][k]) {
-    //                     computerWin[k]--;
-    //                 }
-    //             }
-    //         }
-    //         me = !me;
-    //         revertFlag = true;
-    //     }
-    // }
-    function newgame() {
+    function restart() {
         if (confirm("开始新的游戏？")) {
             location.reload();
         }

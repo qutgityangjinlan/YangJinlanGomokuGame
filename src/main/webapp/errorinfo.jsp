@@ -3,7 +3,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>GomokuGame | 个人信息</title>
+    <title>五子棋游戏平台 | 个人信息</title>
     <jsp:include page="view/include/commonfile.jsp"/>
 </head>
 <body>

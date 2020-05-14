@@ -3,7 +3,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>GomokuGame | 聊天 ${message }</title>
+    <title>五子棋游戏平台 | 聊天 ${message }</title>
     <jsp:include page="view/include/commonfile.jsp"/>
     <script src="${ctx}/static/plugins/sockjs/sockjs.js"></script>
 </head>

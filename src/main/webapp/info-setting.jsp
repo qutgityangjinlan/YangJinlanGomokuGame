@@ -3,7 +3,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>GomokuGame | 个人设置</title>
+    <title>五子棋游戏平台| 个人设置</title>
     <jsp:include page="view/include/commonfile.jsp"/>
 </head>
 <body>
@@ -15,7 +15,7 @@
     <div class="admin-content">
 
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">个人设置</strong> / <small>form</small></div>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">个人设置</strong></div>
         </div>
 
         <div class="am-tabs am-margin" data-am-tabs>
@@ -121,26 +121,7 @@
                                 <input type="text" id="level" name="level" value="${score.level}" disabled>
                             </div>
                         </div>
-<%--                        <table class="am-table am-table-striped">--%>
-<%--                            <thead>--%>
-<%--                            <tr>--%>
-<%--                                <th>总积分</th>--%>
-<%--                                <th></th>--%>
-<%--                                <th>段位</th>--%>
-<%--                                <th></th>--%>
-<%--                                <th>作战记录</th>--%>
-<%--                            </tr>--%>
-<%--                            </thead>--%>
-<%--                            <tbody>--%>
-<%--                                <tr>--%>
-<%--                                    <td id = "scoreT"></td>--%>
-<%--                                    <td></td>--%>
-<%--                                    <td id = "levelT"> </td>--%>
-<%--                                    <td></td>--%>
-<%--                                    <td>#</td>--%>
-<%--                                </tr>--%>
-<%--                            </tbody>--%>
-<%--                        </table>--%>
+
                     </form>
                 </div>
             </div>

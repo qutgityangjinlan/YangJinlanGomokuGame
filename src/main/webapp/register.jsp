@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>GomokuGame | 登录</title>
+    <title>五子棋游戏平台 | 登录</title>
     <link href="${pageContext.request.contextPath }/static/source/css/login.css" rel='stylesheet' type='text/css'/>
     <script src="${pageContext.request.contextPath }/static/plugins/jquery/jquery-3.4.1.js"></script>
     <script src="${pageContext.request.contextPath }/static/plugins/jquery/jquery-2.1.4.min.js"></script>
@@ -13,7 +13,7 @@
 
 <body>
 
-<h1>GomukuGame注册</h1>
+<h1>欢迎注册五子棋游戏平台账号</h1>
 <div class="login-form">
     <div class="close"></div>
     <div class="head-info">

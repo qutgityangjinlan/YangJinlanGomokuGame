@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GomokuGame | 登录</title>
+  <title>五子棋游戏平台 | 登录</title>
   <link href="${pageContext.request.contextPath }/static/source/css/login.css" rel='stylesheet' type='text/css' />
   <script src="${pageContext.request.contextPath }/static/plugins/jquery/jquery-2.1.4.min.js"></script>
   <script src="${pageContext.request.contextPath }/static/plugins/layer/layer.js"></script>
@@ -12,7 +12,7 @@
 
 <body>
 
-<h1>GomokuGame</h1>
+<h1>欢迎登录五子棋游戏平台</h1>
 <div class="login-form">
   <div class="close"> </div>
   <div class="head-info">
@@ -44,7 +44,7 @@
       if (param!=null){
         out.println("<script>$('#submit').attr('value','密码错误!').css('background','red')</script>");
       }else {
-        out.println("<script>$('#submit').attr('value','login~')</script>");
+        out.println("<script>$('#submit').attr('value','登录')</script>");
       }
     %>
   </form>
@@ -104,16 +104,12 @@
     });
 
     $('#userid,#password').change(function(){
-      $('#submit').attr('value','Login').css('background','#3ea751');
+      $('#submit').attr('value','登录').css('background','#3ea751');
     });
   });
 
-  /**
-   * check the login form before user login.
-   * @returns {boolean}
-   */
   function checkLoginForm(){
-    $('#submit').attr('value','Login').css('background','#caebfb');
+    $('#submit').attr('value','登录').css('background','#caebfb');
     var username = $('#userid').val();
     var password = $('#password').val();
     if(isNull(username) && isNull(password)){
@@ -129,7 +125,7 @@
       return false;
     }
     else{
-      $('#submit').attr('value','Logining~');
+      $('#submit').attr('value','登录~');
       return true;
     }
   }
