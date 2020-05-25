@@ -102,18 +102,5 @@
     <span class="am-icon-btn am-icon-th-list"></span>
 </a>
 <jsp:include page="view/include/footer.jsp"/>
-<script>
-    if("${message}"){
-        layer.msg('${message}', {
-            offset: 0,
-        });
-    }
-    if("${error}"){
-        layer.msg('${error}', {
-            offset: 0,
-            shift: 6
-        });
-    }
-</script>
 </body>
 </html>
