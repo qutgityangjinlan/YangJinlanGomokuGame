@@ -14,10 +14,13 @@
 <body>
 <jsp:include page="view/include/header.jsp"/>
 <div class="am-cf admin-main">
-    <jsp:include page="view/include/sidebar1.jsp"/>
+    <jsp:include page="view/include/sidebar.jsp"/>
     <div class="admin-content">
+        <span class="heqi">和棋</span>
         <h1 class="biaoti">人人对战五子棋</h1>
-        <input type="button" class="button21" onclick="newgame()" value="重新开始"/>
+        <input type="button" class="button32" onclick="offerGame()" value="和棋"/>
+        <input type="button" class="button21" onclick="restart()" value="重新开始"/>
+        <input type="button" class="button31" onclick="exitRoom()" value="退出房间"/>
         <div class="am-panel am-pa el-default" style="float:right;width: 20%;">
             <div class="am-panel-hd">
                 <h3 class="am-panel-title">在线列表 [<span id="onlinenum"></span>]</h3>
@@ -37,7 +40,7 @@
     //创建websocket
     var wsServer = null;
     var ws = null;
-    wsServer = "ws://" + location.host + "${pageContext.request.contextPath}" + "/chessServer";
+    wsServer = "ws://" + location.host + "${pageContext.request.contextPath}" + "/chess3Server";
     ws = new WebSocket(wsServer);
     ws.onopen = function (evt) {
         ws.send(JSON.stringify({
@@ -47,26 +50,36 @@
     ws.onmessage = function (evt) {
         console.log(evt.data);
         getpanduan(evt.data);
-
     };
     ws.onerror = function (evt) {  //错误提示
     };
     ws.onclose = function (evt) {//关闭提示
     };
-    //画棋谱
+
+
     var chess = document.getElementById("canvas");
     var context = chess.getContext("2d");
     context.strokeStyle = "#d3d3d3"
-    //开始画线
-    context.beginPath();
-    for (var i = 0; i < 15; i++) {
-        context.moveTo(15 + i * 30, 15);
-        context.lineTo(15 + i * 30, 435);
-        context.stroke();
-        context.moveTo(15, 15 + i * 30);
-        context.lineTo(435, 15 + i * 30);
-        context.stroke();
+
+    var logo = new Image();
+    logo.src = "${ctx}/static/source/img/ricepaper.png";
+    logo.onload = function () {
+        context.drawImage(logo, 0, 0, 450, 450);
+        drawChessBoard();
+    }
+    //绘制棋盘
+    var drawChessBoard = function () {
+        context.beginPath();
+        for (var i = 0; i < 15; i++) {
+            context.moveTo(15 + i * 30, 15);
+            context.lineTo(15 + i * 30, 435);
+            context.stroke();
+            context.moveTo(15, 15 + i * 30);
+            context.lineTo(435, 15 + i * 30);
+            context.stroke();
+        }
         context.closePath();
+
     }
     var iswhite = false;
     var temp;
@@ -105,9 +118,22 @@
     }
 
 
-    function newgame() {
+    function restart() {
         if (confirm("开始新的游戏？")) {
             location.reload();
+        }
+    }
+
+    function exitRoom() {
+        window.location.replace("${ctx}/createRoom.jsp");
+    }
+
+    function offerGame() {
+        if (window.confirm("确定请求和棋？结束游戏？")) {
+            // window.location.replace("${ctx}/createRoom.jsp");
+            location.reload();
+        } else {
+            return true;
         }
     }
 
@@ -129,7 +155,6 @@
             $("#onlinenum").text(message.list.length);  //显示在线人
 
         }
-
     }
 
     function showonline(list) {
@@ -335,7 +360,7 @@
 
     function success(a, b, c, d, temp, count)//判断是否为5颗
     {
-        if (count == 5) {
+        if (count === 5) {
             context.beginPath();
             context.lineWidth = 5;
             context.strokeStyle = 'black';
@@ -344,7 +369,7 @@
             context.closePath();
             context.stroke();
             winner = "白棋胜利";
-            if (temp == 1) {
+            if (temp === 1) {
                 winner = "黑棋胜利";
             }
             alert(winner);

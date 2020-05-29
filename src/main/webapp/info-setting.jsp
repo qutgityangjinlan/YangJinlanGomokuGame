@@ -60,7 +60,7 @@
                         <div class="am-form-group">
                             <label for="age" class="am-u-sm-2 am-form-label">年龄</label>
                             <div class="am-u-sm-10">
-                                <input type="number" id="age" name="age" min="1" max="100" value="${user.age}" placeholder="这里输入你的年龄...">
+                                <input type="number" id="age" name="age" min="1" max="120" value="${user.age}" placeholder="这里输入你的年龄...">
                             </div>
                         </div>
                         <div class="am-form-group">
@@ -134,15 +134,7 @@
 </a>
 <jsp:include page="view/include/footer.jsp"/>
 <script>
-    // $.ajax({
-    //     url : "http://localhost:8080/YangJinlanGomokuGame_war_exploded/AI_five-chess.jsp",
-    //     type : "post",
-    //     dataType :"json",
-    //     contentType : "application/json",
-    //     success :function (scoreJson) {
-    //         $("#scoreT").append(scoreJson)
-    //     }
-    // });
+
     if("${message}"){
         layer.msg('${message}', {
             offset: 0,

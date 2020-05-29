@@ -17,7 +17,7 @@ import javax.websocket.server.ServerEndpoint;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+//定义一个WebSocket服务端。value即访问地址
 @ServerEndpoint(value="/chatServer",configurator=HttpSessionConfigurator.class)
 public class ChatServer{
 	private static int onlineCount=0;	//统计在线人数
@@ -51,10 +51,6 @@ public class ChatServer{
 		broadcast(message);//广播
 	}
 
-	public void OfferGame(){//和棋
-		String message=getMessage("[" + userid +"]请求和棋了", "notice", list);
-		broadcast(message);//广播
-	}
 	@OnMessage
 	public void onMessage(String _message)//接受到数据时调用
 	{

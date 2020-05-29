@@ -7,8 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5390d49f-82e2-44ee-a815-659344277693" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yjl/webSocket/five_chess3Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/AI_five-chess.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/AI_five-chess.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yjl/webSocket/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yjl/webSocket/ChatServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yjl/webSocket/VideoServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/five-chessTest.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/five-chess3.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/info-setting.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/info-setting.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +86,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
-    <property name="MyBatisLogPluginindexNum" value="2345" />
+    <property name="MyBatisLogPluginindexNum" value="2386" />
     <property name="MyBatisLogPluginparameters" value="Parameters:" />
     <property name="MyBatisLogPluginpreparing" value="Preparing:" />
     <property name="MyBatisLogPluginrunning" value="true" />
@@ -87,7 +94,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="H:/code/java/p01/qst_ssm" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -96,23 +103,23 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="H:\JavaProjects\YangJinlanGomokuGame\src\main\webapp\static\plugins\jquery" />
-      <recent name="H:\JavaProjects\YangJinlanGomokuGame\src\main\webapp\static\source\img" />
-      <recent name="H:\JavaProjects\YangJinlanGomokuGame\src\main\webapp\static\source\css" />
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="H:\JavaProjects\YangJinlanGomokuGame\src\main\webapp" />
-      <recent name="H:\JavaProjects\YangJinlanGomokuGame\src\main\java\com\yjl" />
+      <recent name="H:\JavaProjects\YangJinlanGomokuGame\src\main\webapp\WEB-INF\jsp" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="test" />
       <recent name="com.yjl.webSocket" />
       <recent name="com.yjl.dao" />
       <recent name="com.yjl.service" />
       <recent name="com.yjl.pojo" />
-      <recent name="com.yjl.controller" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="H:\JavaProjects\YangJinlanGomokuGame\src\main\webapp" />
-      <recent name="H:\JavaProjects\YangJinlanGomokuGame\src\main\webapp\WEB-INF\jsp" />
+      <recent name="H:\JavaProjects\YangJinlanGomokuGame\src\main\webapp\static\plugins\jquery" />
+      <recent name="H:\JavaProjects\YangJinlanGomokuGame\src\main\webapp\static\source\img" />
+      <recent name="H:\JavaProjects\YangJinlanGomokuGame\src\main\webapp\static\source\css" />
+      <recent name="H:\JavaProjects\YangJinlanGomokuGame\src\main\java\com\yjl" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -134,7 +141,7 @@
       <module name="YangJinlanGomokuGame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.*" />
+          <option name="PATTERN" value="com.yjl.webSocket.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -146,7 +153,7 @@
       <module name="YangJinlanGomokuGame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.*" />
+          <option name="PATTERN" value="com.yjl.webSocket.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -161,7 +168,7 @@
       <module name="YangJinlanGomokuGame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.*" />
+          <option name="PATTERN" value="com.yjl.webSocket.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -372,6 +379,7 @@
       <workItem from="1590415132537" duration="793000" />
       <workItem from="1590557838579" duration="105000" />
       <workItem from="1590647512914" duration="12046000" />
+      <workItem from="1590718149366" duration="7642000" />
     </task>
     <task id="LOCAL-00001" summary="IDEA git ...">
       <created>1585806653589</created>
@@ -443,7 +451,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590416609275</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="完善功能8">
+      <created>1590718175385</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1590718175385</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -461,7 +476,8 @@
     <MESSAGE value="完善功能5" />
     <MESSAGE value="完善功能6" />
     <MESSAGE value="完善功能7" />
-    <option name="LAST_COMMIT_MESSAGE" value="完善功能7" />
+    <MESSAGE value="完善功能8" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善功能8" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="71" key="#Project_Structure" timestamp="1585807376632">
@@ -508,10 +524,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="167" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1536.824@0.0.1536.824" timestamp="1586853138615" />
-    <state x="343" y="6" key="CommitChangelistDialog2" timestamp="1590416608525">
+    <state x="343" y="6" key="CommitChangelistDialog2" timestamp="1590718174191">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="343" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1590416608525" />
+    <state x="343" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1590718174191" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1589004678311">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -600,18 +616,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="212" height="477" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1586077305084" />
-    <state x="306" y="50" key="Maven.ArtifactSearchDialog" timestamp="1585810061193">
+    <state x="306" y="50" key="Maven.ArtifactSearchDialog" timestamp="1590725391401">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="306" y="50" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1585810061193" />
+    <state x="306" y="50" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1590725391401" />
     <state x="86" y="0" key="SettingsEditor" timestamp="1587644628188">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="86" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1587644628188" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1590416617095">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1590718180739">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1590416617095" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1590718180739" />
     <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1590718149787">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -641,9 +657,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/yjl/webSocket/RoomsServer.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/src/main/webapp/createRoom.jsp</url>
+          <line>47</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

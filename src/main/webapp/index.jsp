@@ -92,6 +92,7 @@
         }
     });
 
+    // 新建WebSocket对象，最后的/chatServer@ServerEndpoint("/chatServer")
     var wsServer = null;
     var ws = null;
     wsServer = "ws://" + location.host + "${pageContext.request.contextPath}" + "/chatServer";	//WebServer的路径
@@ -232,7 +233,6 @@
         } else {
             messagetitle = message.from;
         }
-
 
         var html = "<li class=\"am-comment " + isSef + " am-comment-primary\"><a href=\"${ctx}/" + isSefhead + "/" + message.from + "\"><img width=\"48\" height=\"48\" class=\"am-comment-avatar\" alt=\"\" src=\"${ctx}/head/" + message.from + "\"></a><div class=\"am-comment-main\">\n" +
             "<header class=\"am-comment-hd\"><div class=\"am-comment-meta\">   <a class=\"am-comment-author\" href=\"#link-to-user\">" + messagetitle + "</a> 在<time> " + message.time + "</time> 发送给 " + to + " </div></header><div class=\"am-comment-bd\"> <p>" + message.content + "</p></div></div></li>";
