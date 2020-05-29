@@ -314,36 +314,53 @@
 
     function withdraw() {
 
-        window.confirm("确定要悔棋吗？");
-        console.log("悔棋");
-        var Plist = [];
-        var Plist1 = [];
-        Plist = chessList.pop();
-        Plist1 = chessList.pop();
-        console.log(Plist);
-        console.log(Plist1);
-        chessBoard[Plist.x][Plist.y] = 0;
-        chessBoard[Plist1.x][Plist1.y] = 0;
-        console.log(chessList);
-        context.clearRect(0, 0, 450, 450);
-        context.drawImage(logo, 0, 0, 450, 450);
-        drawChessBoard();
-        chessList.forEach(function (item) {
-            context.beginPath();
-            context.arc(30 * item.x + 15, 30 * item.y + 15, 13, 0, 2 * Math.PI, false);
-            var gradient = context.createRadialGradient(15 + item.x * 30 - 2, 15 + item.y * 30 + 2, 13, 15 + item.x * 30 - 2, 15 + item.y * 30 - 2, 0);
-            if (item.color === 'black') {
-                gradient.addColorStop(0, "#0A0A0A");
-                gradient.addColorStop(1, "#636766");
-                context.fillStyle = gradient;
-            } else {
-                gradient.addColorStop(0, "#D1D1D1");
-                gradient.addColorStop(1, "#F9F9F9");
-                context.fillStyle = gradient;
+        if(!over){
+            window.confirm("确定要悔棋吗？");
+            console.log("悔棋");
+            var Plist = [];
+            var Plist1 = [];
+            Plist = chessList.pop();
+            Plist1 = chessList.pop();
+            var xx = Plist.x;
+            var yy = Plist.y;
+            var xx1 = Plist1.x;
+            var yy1 = Plist1.y;
+            chessBoard[xx][yy] = 0;
+            chessBoard[xx1][yy1] = 0;
+            for (var k = 0; k < count; k++) {
+                if (wins[xx][yy][k]) {
+                    wins[xx][yy][k]=false;
+                    myWin[k]--;
+                }
+                if(wins[xx1][yy1][k]){
+                    wins[xx][yy][k]=false;
+                    computerWin[k]--;
+                }
             }
-            context.fill();
+            console.log(chessList);
+            context.clearRect(0, 0, 450, 450);
+            context.drawImage(logo, 0, 0, 450, 450);
+            drawChessBoard();
+            chessList.forEach(function (item) {
+                context.beginPath();
+                context.arc(30 * item.x + 15, 30 * item.y + 15, 13, 0, 2 * Math.PI, false);
+                var gradient = context.createRadialGradient(15 + item.x * 30 - 2, 15 + item.y * 30 + 2, 13, 15 + item.x * 30 - 2, 15 + item.y * 30 - 2, 0);
+                if (item.color === 'black') {
+                    gradient.addColorStop(0, "#0A0A0A");
+                    gradient.addColorStop(1, "#636766");
+                    context.fillStyle = gradient;
+                } else {
+                    gradient.addColorStop(0, "#D1D1D1");
+                    gradient.addColorStop(1, "#F9F9F9");
+                    context.fillStyle = gradient;
+                }
+                context.fill();
 
-        })
+            })
+        }else {
+            return 0;
+        }
+
 
     }
 
