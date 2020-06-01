@@ -356,7 +356,7 @@
         }
         success(line[0], line[1], line[2], line[3], temp, --count)
     }
-
+   
 
     function success(a, b, c, d, temp, count)//判断是否为5颗
     {

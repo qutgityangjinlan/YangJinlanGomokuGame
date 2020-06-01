@@ -77,7 +77,6 @@
     //画棋子
     var onStep = function (i, j, me) {
         console.log("实下的位置:" + i + j);
-
         //将棋子push到list
         chessList.push({
             x: i,
@@ -174,6 +173,7 @@
         }
     }
 
+    //赢法统计的索引
     var count = 0;
 
     //竖线
@@ -220,12 +220,12 @@
         myWin[i] = 0;
         computerWin[i] = 0;
     }
-    console.log(count);
+    console.log(count);//五子棋所有的赢法 572
 
     function computerAI() {
-        var myScore = [];
+        var myScore = [];//二维数组，统计在棋盘上的某一点用户的得分
         var computerScore = [];
-        var max = 0;
+        var max = 0;//在（maxX，maxY）点的最高分数
         var maxX = 0;
         var maxY = 0;
 
@@ -289,8 +289,8 @@
                 }
             }
         }
-        onStep(maxX, maxY, me);
-        chessBoard[maxX][maxY] = 1;
+        onStep(maxX, maxY, me);//计算机在分数最高的点落下棋子
+        chessBoard[maxX][maxY] = 1;//计算机落下白棋
         for (var k = 0; k < count; k++) {
             if (wins[maxX][maxY][k]) {
                 computerWin[k]++;

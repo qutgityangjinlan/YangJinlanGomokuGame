@@ -51,7 +51,7 @@ public class UserController {
 	}
 	//	信息设置
 	@RequestMapping("infosetting/{userid}")
-	public ModelAndView infosetting(@PathVariable("userid")String userid,HttpServletRequest request,Model model){
+	public ModelAndView infosetting(@PathVariable("userid")String userid,Model model){
 		Score score=userScoreService.selectByUserId(userid);
 		ModelAndView modelAndView=new ModelAndView();
 		User user=userService.selectUserByUserId(userid);
@@ -121,6 +121,41 @@ public class UserController {
 			redirectAttributes.addFlashAttribute("error", "["+userid+"]头像上传失败!");
 			return "redirect:/information/"+userid;
 		}
+	}
+	//	修改密码
+	@RequestMapping("/modifypassword/{userid}")
+	public String modifyPassowrd(@PathVariable("userid")String userid,String oldpass,String newpass,RedirectAttributes redirectAttributes,HttpServletRequest request){
+		User user=userService.selectUserByUserId(userid);
+		String password=user.getPassword();
+		if(password.equals(oldpass))
+		{
+			User user1=new User();
+			user1.setPassword(newpass);
+			user1.setUserid(userid);
+			boolean flag=userService.updateUser(user1);
+			if(flag)
+			{
+				UserLog userLog=new UserLog();
+				String ip=request.getRemoteAddr();
+				userLog.setUserid(user.getUserid());
+				userLog.setTime(dateUtil.getDateformat());
+				userLog.setType("修改");
+				userLog.setDetail("修改密码");
+				userLog.setIp(ip);
+				userLogService.insertLog(userLog);
+				redirectAttributes.addFlashAttribute("message", "["+userid+"]密码修改成功!");
+				return "redirect:/information/"+userid;
+			}
+			else {
+				redirectAttributes.addFlashAttribute("error", "["+userid+"]密码修改失败!");
+				return "redirect:/infosetting/"+userid;
+			}
+		}
+		else{
+			System.out.println("修改失败!");
+			redirectAttributes.addFlashAttribute("error", "["+userid+"]密码修改失败!");
+		}
+		return "redirect:/infosetting/"+userid;
 	}
 	//	积分更新
 	@RequestMapping("/insertOrUpdateScore")

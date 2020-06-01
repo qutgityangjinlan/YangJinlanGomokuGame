@@ -16,7 +16,6 @@
 <div class="am-cf admin-main">
     <jsp:include page="view/include/sidebar.jsp"/>
     <div class="admin-content">
-        <span class="heqi">和棋</span>
         <h1 class="biaoti">人人对战五子棋</h1>
         <input type="button" class="button32" onclick="offerGame()" value="和棋"/>
         <input type="button" class="button21" onclick="restart()" value="重新开始"/>

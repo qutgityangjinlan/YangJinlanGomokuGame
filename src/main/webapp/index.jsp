@@ -96,7 +96,12 @@
     var wsServer = null;
     var ws = null;
     wsServer = "ws://" + location.host + "${pageContext.request.contextPath}" + "/chatServer";	//WebServer的路径
-    ws = new WebSocket(wsServer); //创建WebSocket对象
+   if('WebSocket' in window){
+       ws = new WebSocket(wsServer); //创建WebSocket对象
+   }else{
+       ws = new SockJS("http://"+ location.host + "${pageContext.request.contextPath}" + "/chatServer");
+   }
+
     ws.onopen = function (evt) {  //打开时候进行额回掉函数
         layer.msg("已经建立连接", {offset: 0}); //提示已经建立
     };
