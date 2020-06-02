@@ -262,7 +262,7 @@ public class UserController {
 		if(status==-1)
 		{
 			redirectAttributes.addFlashAttribute("error", userid+"的信息未公开!");
-			redirectAttributes.addFlashAttribute("userid", userid);
+			//redirectAttributes.addFlashAttribute("userid", userid);
 			return "redirect:/errorinfo";
 		}
 		else
@@ -273,6 +273,7 @@ public class UserController {
 	@RequestMapping("errorinfo")
 	public String error()
 	{
+
 		return "errorinfo";
 	}
 	@RequestMapping("/system-set")

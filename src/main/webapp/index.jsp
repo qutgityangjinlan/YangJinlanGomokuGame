@@ -93,6 +93,7 @@
     });
 
     // 新建WebSocket对象，最后的/chatServer@ServerEndpoint("/chatServer")
+    //ws 就是websocket协议地址开头
     var wsServer = null;
     var ws = null;
     wsServer = "ws://" + location.host + "${pageContext.request.contextPath}" + "/chatServer";	//WebServer的路径
@@ -101,7 +102,7 @@
    }else{
        ws = new SockJS("http://"+ location.host + "${pageContext.request.contextPath}" + "/chatServer");
    }
-
+    //下面的回调函数，自动调用
     ws.onopen = function (evt) {  //打开时候进行额回掉函数
         layer.msg("已经建立连接", {offset: 0}); //提示已经建立
     };
