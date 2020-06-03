@@ -23,9 +23,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 
 //登录注册控制器
 @Controller
@@ -40,7 +37,7 @@ public class LoginController {
     //@ModelAttribute注解用于将方法的参数或方法的返回值绑定到指定的模型属性上，并返回给Web视图
     @RequestMapping("/login")
     public String login(@ModelAttribute User user, HttpServletRequest request, RedirectAttributes redirectAttributes, WordDefined defined,Model model) {
-        //获取当前的subject
+        //获取当前的subject，调用SecurityUtils.getSubject()方法
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(user.getUserid(), user.getPassword());
         try {

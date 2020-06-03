@@ -39,8 +39,10 @@ public class UserController {
 	//	展示用户信息
 	//@PathVariable接收请求路径中占位符的值，跟RequestMapping中的参数一致
 	@RequestMapping("information/{userid}")
-	public ModelAndView information(@PathVariable("userid")String userid)
+	public ModelAndView information(@PathVariable("userid")String userid,HttpServletRequest request)
 	{
+		System.out.println("当前用户："+userid);
+		request.getSession().setAttribute("userid", userid);
 		ModelAndView modelAndView=new ModelAndView();
 		User user=userService.selectUserByUserId(userid);
 		Score score = userScoreService.selectByUserId(userid);
@@ -256,14 +258,17 @@ public class UserController {
 	}
 	//	其他人信息
 	@RequestMapping("otherinfo/{userid}")
-	public String otherinformation(@PathVariable("userid")String userid,HttpServletRequest request,RedirectAttributes redirectAttributes)
+	public String otherinformation(@PathVariable("userid")String userid,HttpServletRequest request,RedirectAttributes redirectAttributes,Model model)
 	{
-		int status=userService.selectUserByUserId(userid).getStatus();
-		if(status==-1)
+		User user =userService.selectUserByUserId(userid);
+		if(user.getStatus()==-1)
 		{
+			System.out.println("当前用户名："+userid);
 			redirectAttributes.addFlashAttribute("error", userid+"的信息未公开!");
-			//redirectAttributes.addFlashAttribute("userid", userid);
-			return "redirect:/errorinfo";
+			model.addAttribute("username",userid);
+			model.addAttribute("image",user.getProfilehead());
+			model.addAttribute("nickName",user.getNickname());
+			return "errorinfo";
 		}
 		else
 		{
@@ -273,7 +278,6 @@ public class UserController {
 	@RequestMapping("errorinfo")
 	public String error()
 	{
-
 		return "errorinfo";
 	}
 	@RequestMapping("/system-set")

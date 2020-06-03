@@ -14,7 +14,7 @@
     <!-- content start -->
     <div class="admin-content">
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">${userid}的个人信息</strong> </div>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">${user.userid}的个人信息</strong> </div>
         </div>
         <div class="am-tabs am-margin" data-am-tabs style="height: 300px">
             <ul class="am-tabs-nav am-nav am-nav-tabs" >
@@ -29,7 +29,7 @@
                             ${user.nickname}
                         </div>
                         <div class="am-u-md-6" style="float: right">
-                            <img class="am-circle" src="${pageContext.request.contextPath}/${user.profilehead}" width="200" height="200" alt="${user.nickname}"/>
+                            <img class="am-circle" src="${pageContext.request.contextPath}${user.profilehead}" width="200" height="200" alt="${user.nickname}"/>
                         </div>
 
                         <div class="am-u-md-3"><b>性别:</b></div>

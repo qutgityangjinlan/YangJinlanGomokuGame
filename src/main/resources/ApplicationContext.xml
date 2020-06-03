@@ -62,7 +62,10 @@
 		<!-- 	    过滤链 -->
 		<property name="filterChainDefinitions">
 			<value>
-				<!-- 	            anon代表不拦截的地址,authc代表拦截的地址，logout代表退出的路径 -->
+				<!--配置哪些页面需要受保护以及访问这些页面需要的权限
+				    anon代表不拦截的地址，可以匿名访问
+				    authc代表拦截的地址，必须认证（即登录）后才可以访问的页面
+				    logout代表退出的路径，即登出 -->
 				/login=anon
 				/user/*=anon
 				/register=anon
@@ -72,7 +75,9 @@
 			</value>
 		</property>
 	</bean>
+	<!-- 配置lifecycleBeanPostProcessor，可以自定的来调用在springIOC容器的shiro bean的生命周期方法。-->
 	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+	<!-- 启用IOC容器中使用shiro的注解，但必须在配置了LifecycleBeanPostProcessor之后才可以使用-->
 	<bean class="org.apache.shiro.spring.LifecycleBeanPostProcessor" depends-on="lifecycleBeanPostProcessor"/>
 	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
 		<property name="securityManager" ref="securityManager"/>

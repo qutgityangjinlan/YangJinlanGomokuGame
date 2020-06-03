@@ -55,17 +55,6 @@ public class myrealm extends AuthorizingRealm{
 		}
 		return null;
 
-
-//		String username=(String) token.getPrincipal();
-//		System.out.println("userid:"+username);
-//		User user=userService.selectUserByUserId(username);
-//		if(user!=null)
-//		{
-//			SecurityUtils.getSubject().getSession().setAttribute("currentUser", user);
-//			AuthenticationInfo authenticationInfo=new SimpleAuthenticationInfo(user.getUserid(),user.getPassword(),"myRealm");
-//			return authenticationInfo;
-//		}
-//		return null;
 	}
 
 }

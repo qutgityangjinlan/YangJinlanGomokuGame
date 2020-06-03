@@ -14,7 +14,7 @@
     <!-- content start -->
     <div class="admin-content">
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">${userid}的个人信息</strong> / <small>info</small></div>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">${username}的个人信息</strong></div>
         </div>
         <div class="am-tabs am-margin" data-am-tabs>
             <ul class="am-tabs-nav am-nav am-nav-tabs">
@@ -25,9 +25,8 @@
                     <div class="am-g">
                         <div class="am-u-md-3"><b>昵称:保密</b></div>
                         <div class="am-u-md-6" style="float: right">
-                            <img class="am-circle" src="${pageContext.request.contextPath}/${user.profilehead}" width="140" height="140" alt="${user.nickname}"/>
+                            <img class="am-circle" src="${pageContext.request.contextPath}${image}" width="140" height="140" alt="${nickName}"/>
                         </div>
-
                         <div class="am-u-md-3"><b>性别:保密</b></div>
                         <div class="am-u-md-3"><b>年龄:保密</b></div>
                         <div class="am-u-md-3"><b>简介:保密</b></div>
