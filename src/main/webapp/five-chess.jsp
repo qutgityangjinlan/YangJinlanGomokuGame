@@ -29,9 +29,7 @@
         </div>
         <canvas class="canvasplace" id="canvas" width="450" height="450"></canvas>
     </div>
-    <a href="#" class="am-show-sm-only admin-me
-	
-	nu" data-am-offcanvas="{target: '#admin-offcanvas'}">
+    <a href="#" class="am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}">
         <span class="am-icon-btn am-icon-th-list"></span></a>
     <jsp:include page="view/include/footer.jsp"/>
 </div>
@@ -348,7 +346,6 @@
                 count++;
             } else {
                 i = 100;
-                ;
                 j = -1;
             }
             i++;

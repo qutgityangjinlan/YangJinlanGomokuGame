@@ -92,7 +92,7 @@
         }
     });
 
-    // 新建WebSocket对象，最后的/chatServer@ServerEndpoint("/chatServer")
+    // 新建WebSocket对象，最后的/chatServer对应@ServerEndpoint("/chatServer")，就是websocket的服务地址
     //ws 就是websocket协议地址开头
     var wsServer = null;
     var ws = null;
@@ -103,9 +103,11 @@
        ws = new SockJS("http://"+ location.host + "${pageContext.request.contextPath}" + "/chatServer");
    }
     //下面的回调函数，自动调用
-    ws.onopen = function (evt) {  //打开时候进行额回掉函数
+    //当和websocket服务器连接成功的时候触发
+    ws.onopen = function (evt) {  //打开时候进行的回掉函数
         layer.msg("已经建立连接", {offset: 0}); //提示已经建立
     };
+   //接收websocket服务的数据
     ws.onmessage = function (evt) { //用于显示后台传递的数据
         analysisMessage(evt.data);  //解析后台传回的消息,并予以展示
     };
@@ -268,8 +270,6 @@
     }
 
     function addChat(user) {
-
-        alert('和'+user+'私聊');
         var sendto = $("#sendto");
         var i = 1;
         var receive = (sendto.text() === ("全体成员" ? "" : i = 0));
