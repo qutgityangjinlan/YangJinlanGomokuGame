@@ -220,7 +220,6 @@
                 iswhite = true;
                 onStep("black", x, y);
                 iswin("black", x, y);
-// 				AIplay();
 
             }
         }

@@ -26,7 +26,8 @@
                         <c:set value="${user}" var="user"/>
                         <div class="am-u-md-3"><b>昵称:</b></div>
                         <div class="am-u-md-3">
-                            ${user.nickname}
+                            <c:if test="${user.nickname == null || user.nickname == ''}">未知</c:if>
+                            <c:if test="${user.nickname != null || user.nickname != ''}"> ${user.nickname}</c:if>
                         </div>
                         <div class="am-u-md-6" style="float: right">
                             <img class="am-circle" src="${pageContext.request.contextPath}${user.profilehead}" width="200" height="200" alt="${user.nickname}"/>

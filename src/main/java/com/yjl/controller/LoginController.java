@@ -61,6 +61,9 @@ public class LoginController {
             request.getSession().setAttribute("userid", user.getUserid());
             request.getSession().setAttribute("login_status", true);
             request.getSession().setAttribute("lognumber", lognumber);
+            //redirectAttributes.addFlashAttribute这种方法是隐藏了参数，链接地址上不直接暴露，但是能且只能在重定向的 “页面” 获取prama参数值。
+            // 其原理就是放到session中，session在跳到页面后马上移除对象。如果是重定向一个controller中是获取不到该prama属性值的。
+            // 除非在controller中用(@RequestPrama(value = "prama")String prama)注解，采用传参的方式。
             redirectAttributes.addFlashAttribute("message", defined.LOGIN_SUCCESS);
             return "index";
 

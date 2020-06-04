@@ -46,7 +46,7 @@ public class ChatServer{
 		webSocket.remove(this);//移除次Server
 		subOnlineCount();     //人数减一
 		list.remove(userid);//移除次用户id
-		routetab.remove(userid);//移除MAP中的次用户
+		routetab.remove(userid);//移除MAP中的此用户
 		String message=getMessage("[" + userid +"]离开了聊天室,当前在线人数为"+getOnlineCount()+"位", "notice", list);
 		broadcast(message);//广播
 	}
@@ -73,6 +73,7 @@ public class ChatServer{
 	}
 	@OnError
 	public void onError(Throwable error){
+
 		error.printStackTrace();
 	}
 	public void broadcast(String message)//广播信息
